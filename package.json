@@ -1,6 +1,6 @@
 {
   "name": "dsh-big-whale",
-  "version": "0.6.0-rc.2",
+  "version": "0.6.0-rc.3",
   "description": "大鲸鱼 / Big Whale / 大クジラ: an animated coding companion with trilingual voices and lip sync for DeepSeek Harness.",
   "type": "module",
   "main": "lib/host.mjs",

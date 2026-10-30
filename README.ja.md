@@ -2,7 +2,7 @@
 
 [English](README.md) · [简体中文](README.zh.md) · [日本語](README.ja.md)
 
-[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.2)
+[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.3)
 
 DeepSeek Harness 用のクジラ娘コンパニオンです。コードを書く時間に寄り添い、イベントに合わせて声や表情を変えます。コンテキストが圧縮されると、大きなご飯を持ちます。
 
@@ -23,7 +23,7 @@ DeepSeek Harness 用のクジラ娘コンパニオンです。コードを書く
 動作確認済み：**DSH 0.2.1-rc.5**、**Node.js 22.17+**。既存の Web 用 profile にインストールしてください。`web` は使用中の profile 名に置き換えられます。
 
 ```sh
-dsh plugin --profile web add dsh-big-whale@0.6.0-rc.2
+dsh plugin --profile web add dsh-big-whale@0.6.0-rc.3
 dsh web
 ```
 

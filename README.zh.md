@@ -2,7 +2,7 @@
 
 [English](README.md) · [简体中文](README.zh.md) · [日本語](README.ja.md)
 
-[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.2)
+[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.3)
 
 给 DeepSeek Harness 使用的鲸鱼娘编程伙伴。写代码时陪着你，根据事件切换语音和表情；上下文压缩时，会捧起一碗超大的白米饭。
 
@@ -23,7 +23,7 @@
 已测试 **DSH 0.2.1-rc.5**、**Node.js 22.17+**。请安装到已有的 Web 类型 profile；下面的 `web` 可替换为你的 profile 名称。
 
 ```sh
-dsh plugin --profile web add dsh-big-whale@0.6.0-rc.2
+dsh plugin --profile web add dsh-big-whale@0.6.0-rc.3
 dsh web
 ```
 

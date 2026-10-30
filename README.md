@@ -2,7 +2,7 @@
 
 [English](README.md) · [简体中文](README.zh.md) · [日本語](README.ja.md)
 
-[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.2)
+[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.3)
 
 A whale-girl desktop companion for DeepSeek Harness. She keeps you company while you code, reacts to events, and picks up a giant bowl of rice when your context is compacted.
 
@@ -23,7 +23,7 @@ Watch the [English feature demo on YouTube](https://www.youtube.com/watch?v=cyWn
 Tested with **DSH 0.2.1-rc.5** and **Node.js 22.17+**. Use your existing Web-backed DSH profile; replace `web` with its name.
 
 ```sh
-dsh plugin --profile web add dsh-big-whale@0.6.0-rc.2
+dsh plugin --profile web add dsh-big-whale@0.6.0-rc.3
 dsh web
 ```
 

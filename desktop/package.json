@@ -1,6 +1,6 @@
 {
   "name": "big-whale-desktop",
   "private": true,
-  "version": "0.6.0-rc.2",
+  "version": "0.6.0-rc.3",
   "main": "main.cjs"
 }

@@ -1,19 +1,19 @@
-# Public release: 0.6.0-rc.2
+# Release: 0.6.0-rc.3
 
-Published on npm on 2026-10-30 after interactive account verification. The public archive was downloaded and compared with the approved artifact, then installed into a fresh DSH 0.2.1-rc.5 Web profile.
+This prerelease adds the persistent idle-motion amplitude control from PR #1 and includes synchronized Chinese, English and Japanese documentation with LINUX DO acknowledgement links.
 
-- Package: https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.2
-- Archive: https://registry.npmjs.org/dsh-big-whale/-/dsh-big-whale-0.6.0-rc.2.tgz
-- Repository: https://github.com/Aliciawque/dsh-big-whale
-- Size: 38,475,845 bytes; 236 release files.
-- SHA-256: 76ab469795dec911322f7aff86d56485073d22d950d21b7bd7c277599e37827f
+- Amplitude: 20%–120%, 5% steps, default 80%; changes apply immediately and survive restart.
+- Recorded voices, character proportions, licenses and existing motion behavior are retained.
+- Host and desktop diagnostics identify 0.6.0-rc.3.
 
-The npm archive is immutable. This repository adds synchronized English, Chinese and Japanese documentation, repository metadata, a captured preview and the validated custom market index around the same runtime and assets. See docs/VERIFICATION.md for the tested limits.
+Install the pinned release:
 
-Install the pinned release with:
+    dsh plugin --profile web add dsh-big-whale@0.6.0-rc.3
 
-    dsh plugin --profile web add dsh-big-whale@0.6.0-rc.2
+Or use the public prerelease channel: dsh-big-whale@next. Replace web with your Web-backed DSH profile and restart it after upgrading.
 
-The public prerelease channel is next. Replace web with your Web-backed profile. Windows desktop mode may need the explicit official Electron setup described in the READMEs.
+Package: https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.3
 
-Character assets remain CC BY-NC-SA 4.0 with credits to 上善无形 and ZipZipPipe; code has separate MIT notices. Public distribution does not imply official DeepSeek or community-market certification.
+Tested scope: Windows, DSH 0.2.1-rc.5, Node.js 22.17+. Release preparation validates the market index and installs the exact npm archive into a separate Web-backed profile. The public archive is checked against that reviewed artifact after publication. See docs/VERIFICATION.md in the repository for the verification scope.
+
+Character design credits: 上善无形 and ZipZipPipe. Character visuals remain CC BY-NC-SA 4.0; code has separate MIT notices. This is a fan-made project, not official DeepSeek or community-market certification.

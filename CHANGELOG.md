@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.0-rc.3 — 2026-10-30
+
+- Add a persistent 20%–120% idle-motion amplitude slider with Chinese, English and Japanese labels.
+- Keep saved amplitude values and apply changes immediately through the existing renderer.
+- Include trilingual LINUX DO community acknowledgement links and synchronized installation guides.
+- Align host and desktop diagnostics with the package version.
+
 ## 0.6.0-rc.2 — 2026-10-30
 
 - First public npm release of Big Whale for DSH 0.2.1-rc.5.

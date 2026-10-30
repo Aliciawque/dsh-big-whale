@@ -18,7 +18,7 @@ Reusable launch drafts. The official DSH community introduction and directory su
 
 给 DSH 做了一只大鲸鱼桌宠。她会陪你写代码、跟着鼠标看你、切换表情；点多了会催你专心。上下文压缩时，她还会捧起一碗超大的白米饭。中英日三语语音和连续口型已做好，Windows 桌面模式支持最小化后继续陪伴。
 
-安装：`dsh plugin --profile web add dsh-big-whale@0.6.0-rc.2`
+安装：`dsh plugin --profile web add dsh-big-whale@0.6.0-rc.3`
 
 项目：https://github.com/Aliciawque/dsh-big-whale
 
