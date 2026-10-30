@@ -2,6 +2,16 @@
 
 RC4 corrects npm-facing README URLs and release version strings. It does not change runtime logic. Its exact archive is installed in a separate Web-backed DSH profile and checked file by file. All runtime assets match the RC3 archive; the host/desktop changes only report the new version. The prior RC3 UI checks below remain the behavior evidence. The public npm archive is compared after publication, followed by a fresh registry installation.
 
+## RC4 public registry verification
+
+- npm: dsh-big-whale@0.6.0-rc.4, published 2026-10-30T12:47:17.238Z, next channel.
+- Reviewed/public archive: 38474018 bytes, 236 files.
+- SHA-256: `59a1fc5f59b8ad624fc01227c7c5a3f4920dd184e2dac9e3de4ddd9fcb4dcf7b`.
+- Public SHA-1/SHA-512 registry integrity and downloaded archive matched the reviewed package.
+- Installed the exact public npm version in a fresh isolated Web-backed profile; all 236 files matched the reviewed source.
+- Absolute preview and trilingual documentation links are included; all 210 runtime assets match RC3.
+- The active user DSH profile and desktop preferences were not replaced by this isolated check.
+
 ## RC3 verification
 
 Host: DSH 0.2.1-rc.5, Windows, Node.js 24.11.1.
