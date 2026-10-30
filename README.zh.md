@@ -55,6 +55,10 @@ https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/market-index.jso
 
 在启用「自定义插件市场」的 DSH profile 中，打开 **插件 → 发现 → 添加索引源**，添加上面的地址。社区目录的抓取、审核与官方收录各有独立流程，详见 [市场说明](MARKETPLACE.md)。
 
+## 社区认可
+
+本项目认可并支持 [LINUX DO](https://linux.do/) 社区的开放交流与知识分享。
+
 ## 许可与署名
 
 插件代码保留 MIT 声明。角色设定与衍生美术遵循 **CC BY-NC-SA 4.0**：署名、非商用、相同方式共享。原设署名：**上善无形、ZipZipPipe**。代码许可不等于角色商用授权。

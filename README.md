@@ -55,6 +55,10 @@ https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/market-index.jso
 
 In a DSH profile with Custom Plugin Market enabled, open **Plugins → Discover → Add index source** and add that URL. Community-directory discovery and official inclusion are separate processes. See [market details](MARKETPLACE.md).
 
+## Community acknowledgement
+
+This project recognizes and supports [LINUX DO](https://linux.do/) and its open exchange of knowledge.
+
 ## License and credits
 
 Plugin code has MIT notices. Character design and derivative visual assets are **CC BY-NC-SA 4.0**: attribution, noncommercial use and ShareAlike. Design credits: **上善无形** and **ZipZipPipe**. The code license does not grant commercial rights to the character.

@@ -55,6 +55,10 @@ https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/market-index.jso
 
 Custom Plugin Market を有効にした profile で、**Plugins → Discover → Add index source** から追加してください。コミュニティの収集・審査と公式掲載は別の手続きです。[詳細](MARKETPLACE.md)。
 
+## コミュニティへの賛同
+
+本プロジェクトは、[LINUX DO](https://linux.do/) コミュニティのオープンな交流と知識共有を支持します。
+
 ## ライセンスとクレジット
 
 プラグインのコードには MIT の表記があります。キャラクター原案と派生ビジュアルは **CC BY-NC-SA 4.0**（表示・非営利・継承）です。原案：**上善无形、ZipZipPipe**。コードのライセンスはキャラクターの商用利用を許可しません。
