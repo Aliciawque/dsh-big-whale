@@ -8,6 +8,15 @@ The same amplitude implementation was previously exercised at 80%, 20%, 120% and
 
 Cross-platform, other physical machines and full provider-event flows remain outside this release check. Word-internal phone timing is estimated. No official marketplace endorsement is implied.
 
+## RC3 public registry verification
+
+- npm: dsh-big-whale@0.6.0-rc.3, published 2026-10-30T12:30:23.997Z, next channel.
+- Reviewed/public archive: 38474057 bytes, 236 files.
+- SHA-256: `796b7a427fcd6bab0fe416a872ebd03a385b6696ed402681e1e3a69653c02dd8`.
+- Public SHA-1/SHA-512 registry integrity and downloaded archive matched the reviewed package.
+- Installed the exact public npm version in a fresh isolated Web-backed profile; all 236 files matched the reviewed source.
+- The active user DSH profile and desktop preferences were not replaced by this isolated check.
+
 ## Previous release evidence
 
 ### RC2 — 2026-10-30
