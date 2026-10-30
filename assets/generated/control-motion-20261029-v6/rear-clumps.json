@@ -1,0 +1,628 @@
+{
+  "parts": [
+    {
+      "name": "part_rear_clump_l_outer",
+      "rect": [
+        102.80916623211078,
+        204.13430420711975,
+        296,
+        725
+      ],
+      "kind": "hair",
+      "stage": "back",
+      "depth": 0.35,
+      "followBand": [
+        350,
+        760
+      ],
+      "pivot": [
+        355,
+        210
+      ],
+      "sway": 1.04,
+      "meshCell": 6,
+      "opacityParameter": "visHair",
+      "strandNames": [
+        "part_rear_clump_l_outer"
+      ],
+      "rearClump": {
+        "bottom": 929.1343042071197
+      }
+    },
+    {
+      "name": "part_rear_clump_l_middle",
+      "rect": [
+        166.57077478059549,
+        193.9191419141914,
+        256,
+        737
+      ],
+      "kind": "hair",
+      "stage": "back",
+      "depth": 0.35,
+      "followBand": [
+        350,
+        760
+      ],
+      "pivot": [
+        371,
+        200
+      ],
+      "sway": 0.98,
+      "meshCell": 6,
+      "opacityParameter": "visHair",
+      "strandNames": [
+        "part_rear_clump_l_middle"
+      ],
+      "rearClump": {
+        "bottom": 930.9191419141914
+      }
+    },
+    {
+      "name": "part_rear_clump_l_inner",
+      "rect": [
+        254.75321508329696,
+        209.21901528013584,
+        190,
+        681
+      ],
+      "kind": "hair",
+      "stage": "back",
+      "depth": 0.35,
+      "followBand": [
+        350,
+        760
+      ],
+      "pivot": [
+        388,
+        215
+      ],
+      "sway": 0.92,
+      "meshCell": 6,
+      "opacityParameter": "visHair",
+      "strandNames": [
+        "part_rear_clump_l_inner"
+      ],
+      "rearClump": {
+        "bottom": 890.2190152801359
+      }
+    },
+    {
+      "name": "part_rear_clump_r_inner",
+      "rect": [
+        484.53305665075743,
+        208.96672504378284,
+        186,
+        689
+      ],
+      "kind": "hair",
+      "stage": "back",
+      "depth": 0.35,
+      "followBand": [
+        350,
+        760
+      ],
+      "pivot": [
+        555,
+        215
+      ],
+      "sway": 0.94,
+      "meshCell": 6,
+      "opacityParameter": "visHair",
+      "strandNames": [
+        "part_rear_clump_r_inner"
+      ],
+      "rearClump": {
+        "bottom": 897.9667250437828
+      }
+    },
+    {
+      "name": "part_rear_clump_r_middle",
+      "rect": [
+        518.4247292802038,
+        193.9512195121951,
+        246,
+        744
+      ],
+      "kind": "hair",
+      "stage": "back",
+      "depth": 0.35,
+      "followBand": [
+        350,
+        760
+      ],
+      "pivot": [
+        576,
+        200
+      ],
+      "sway": 1,
+      "meshCell": 6,
+      "opacityParameter": "visHair",
+      "strandNames": [
+        "part_rear_clump_r_middle"
+      ],
+      "rearClump": {
+        "bottom": 937.9512195121952
+      }
+    },
+    {
+      "name": "part_rear_clump_r_outer",
+      "rect": [
+        555.0037995555236,
+        204.1209677419355,
+        282,
+        729
+      ],
+      "kind": "hair",
+      "stage": "back",
+      "depth": 0.35,
+      "followBand": [
+        350,
+        760
+      ],
+      "pivot": [
+        592,
+        210
+      ],
+      "sway": 1.08,
+      "meshCell": 6,
+      "opacityParameter": "visHair",
+      "strandNames": [
+        "part_rear_clump_r_outer"
+      ],
+      "rearClump": {
+        "bottom": 933.1209677419355
+      }
+    }
+  ],
+  "strands": [
+    {
+      "name": "part_rear_clump_l_outer",
+      "anchorPart": "part_rear_clump_l_outer",
+      "nodes": [
+        [
+          355,
+          210
+        ],
+        [
+          338.30329782837066,
+          437.58899676375404
+        ],
+        [
+          236.72175887734448,
+          671.0436893203884
+        ],
+        [
+          283.5942386167051,
+          905.6715210355987
+        ]
+      ],
+      "sigma": 80,
+      "k": 0.17,
+      "damping": 0.7,
+      "inertia": 0.94,
+      "max": 63,
+      "outputGain": 4,
+      "velocityLag": 0.42,
+      "lagSmoothing": 0.18,
+      "finalLimit": 63
+    },
+    {
+      "name": "part_rear_clump_l_middle",
+      "anchorPart": "part_rear_clump_l_middle",
+      "nodes": [
+        [
+          371,
+          200
+        ],
+        [
+          363.09926099542804,
+          431.07260726072604
+        ],
+        [
+          317.65412475224,
+          668.2260726072607
+        ],
+        [
+          226.01034680294896,
+          906.5957095709571
+        ]
+      ],
+      "sigma": 80,
+      "k": 0.21,
+      "damping": 0.77,
+      "inertia": 0.94,
+      "max": 54,
+      "outputGain": 4,
+      "velocityLag": 0.34,
+      "lagSmoothing": 0.192,
+      "finalLimit": 54
+    },
+    {
+      "name": "part_rear_clump_l_inner",
+      "anchorPart": "part_rear_clump_l_inner",
+      "nodes": [
+        [
+          388,
+          215
+        ],
+        [
+          399.9083596216703,
+          427.74023769100165
+        ],
+        [
+          354.9651831492341,
+          647.4176570458404
+        ],
+        [
+          328.9649463417138,
+          867.0950764006791
+        ]
+      ],
+      "sigma": 80,
+      "k": 0.26,
+      "damping": 0.82,
+      "inertia": 0.94,
+      "max": 43,
+      "outputGain": 4,
+      "velocityLag": 0.27,
+      "lagSmoothing": 0.204,
+      "finalLimit": 43
+    },
+    {
+      "name": "part_rear_clump_r_inner",
+      "anchorPart": "part_rear_clump_r_inner",
+      "nodes": [
+        [
+          555,
+          215
+        ],
+        [
+          535.5974156404989,
+          429.78458844133104
+        ],
+        [
+          591.2654773526829,
+          651.8091068301226
+        ],
+        [
+          594.3783952979801,
+          873.8336252189142
+        ]
+      ],
+      "sigma": 80,
+      "k": 0.28,
+      "damping": 0.8,
+      "inertia": 0.94,
+      "max": 45,
+      "outputGain": 4,
+      "velocityLag": 0.29,
+      "lagSmoothing": 0.216,
+      "finalLimit": 45
+    },
+    {
+      "name": "part_rear_clump_r_middle",
+      "anchorPart": "part_rear_clump_r_middle",
+      "nodes": [
+        [
+          576,
+          200
+        ],
+        [
+          573.2943257900806,
+          433.4829268292683
+        ],
+        [
+          652.5065658270332,
+          673.0146341463415
+        ],
+        [
+          697.7986014192883,
+          913.7560975609756
+        ]
+      ],
+      "sigma": 80,
+      "k": 0.23,
+      "damping": 0.74,
+      "inertia": 0.94,
+      "max": 57,
+      "outputGain": 4,
+      "velocityLag": 0.37,
+      "lagSmoothing": 0.22799999999999998,
+      "finalLimit": 57
+    },
+    {
+      "name": "part_rear_clump_r_outer",
+      "anchorPart": "part_rear_clump_r_outer",
+      "nodes": [
+        [
+          592,
+          210
+        ],
+        [
+          624.6017701325968,
+          439.2822580645161
+        ],
+        [
+          720.0828348147353,
+          674.4435483870968
+        ],
+        [
+          671.5760649786178,
+          909.6048387096774
+        ]
+      ],
+      "sigma": 80,
+      "k": 0.18,
+      "damping": 0.68,
+      "inertia": 0.94,
+      "max": 65,
+      "outputGain": 4,
+      "velocityLag": 0.45,
+      "lagSmoothing": 0.24,
+      "finalLimit": 65
+    }
+  ],
+  "assets": {
+    "part_rear_clump_l_outer": "rear-clumps/part_rear_clump_l_outer.png",
+    "part_rear_clump_l_middle": "rear-clumps/part_rear_clump_l_middle.png",
+    "part_rear_clump_l_inner": "rear-clumps/part_rear_clump_l_inner.png",
+    "part_rear_clump_r_inner": "rear-clumps/part_rear_clump_r_inner.png",
+    "part_rear_clump_r_middle": "rear-clumps/part_rear_clump_r_middle.png",
+    "part_rear_clump_r_outer": "rear-clumps/part_rear_clump_r_outer.png"
+  },
+  "records": [
+    {
+      "name": "part_rear_clump_l_outer",
+      "atlasBounds": [
+        21,
+        12,
+        534,
+        620
+      ],
+      "file": "rear-clumps/part_rear_clump_l_outer.png",
+      "sourceRoot": [
+        445.5939393939394,
+        5
+      ],
+      "rect": [
+        102.80916623211078,
+        204.13430420711975,
+        296,
+        725
+      ],
+      "nodes": [
+        [
+          355,
+          210
+        ],
+        [
+          338.30329782837066,
+          437.58899676375404
+        ],
+        [
+          236.72175887734448,
+          671.0436893203884
+        ],
+        [
+          283.5942386167051,
+          905.6715210355987
+        ]
+      ],
+      "size": [
+        523,
+        618
+      ]
+    },
+    {
+      "name": "part_rear_clump_l_middle",
+      "atlasBounds": [
+        464,
+        17,
+        907,
+        613
+      ],
+      "file": "rear-clumps/part_rear_clump_l_middle.png",
+      "sourceRoot": [
+        361.7439024390244,
+        5
+      ],
+      "rect": [
+        166.57077478059549,
+        193.9191419141914,
+        256,
+        737
+      ],
+      "nodes": [
+        [
+          371,
+          200
+        ],
+        [
+          363.09926099542804,
+          431.07260726072604
+        ],
+        [
+          317.65412475224,
+          668.2260726072607
+        ],
+        [
+          226.01034680294896,
+          906.5957095709571
+        ]
+      ],
+      "size": [
+        453,
+        606
+      ]
+    },
+    {
+      "name": "part_rear_clump_l_inner",
+      "atlasBounds": [
+        922,
+        32,
+        1238,
+        611
+      ],
+      "file": "rear-clumps/part_rear_clump_l_inner.png",
+      "sourceRoot": [
+        228.6234309623431,
+        5
+      ],
+      "rect": [
+        254.75321508329696,
+        209.21901528013584,
+        190,
+        681
+      ],
+      "nodes": [
+        [
+          388,
+          215
+        ],
+        [
+          399.9083596216703,
+          427.74023769100165
+        ],
+        [
+          354.9651831492341,
+          647.4176570458404
+        ],
+        [
+          328.9649463417138,
+          867.0950764006791
+        ]
+      ],
+      "size": [
+        326,
+        589
+      ]
+    },
+    {
+      "name": "part_rear_clump_r_inner",
+      "atlasBounds": [
+        55,
+        654,
+        361,
+        1215
+      ],
+      "file": "rear-clumps/part_rear_clump_r_inner.png",
+      "sourceRoot": [
+        119.71803278688525,
+        5
+      ],
+      "rect": [
+        484.53305665075743,
+        208.96672504378284,
+        186,
+        689
+      ],
+      "nodes": [
+        [
+          555,
+          215
+        ],
+        [
+          535.5974156404989,
+          429.78458844133104
+        ],
+        [
+          591.2654773526829,
+          651.8091068301226
+        ],
+        [
+          594.3783952979801,
+          873.8336252189142
+        ]
+      ],
+      "size": [
+        316,
+        571
+      ]
+    },
+    {
+      "name": "part_rear_clump_r_middle",
+      "atlasBounds": [
+        366,
+        632,
+        782,
+        1237
+      ],
+      "file": "rear-clumps/part_rear_clump_r_middle.png",
+      "sourceRoot": [
+        99.7035175879397,
+        5
+      ],
+      "rect": [
+        518.4247292802038,
+        193.9512195121951,
+        246,
+        744
+      ],
+      "nodes": [
+        [
+          576,
+          200
+        ],
+        [
+          573.2943257900806,
+          433.4829268292683
+        ],
+        [
+          652.5065658270332,
+          673.0146341463415
+        ],
+        [
+          697.7986014192883,
+          913.7560975609756
+        ]
+      ],
+      "size": [
+        426,
+        615
+      ]
+    },
+    {
+      "name": "part_rear_clump_r_outer",
+      "atlasBounds": [
+        759,
+        628,
+        1230,
+        1238
+      ],
+      "file": "rear-clumps/part_rear_clump_r_outer.png",
+      "sourceRoot": [
+        63.10344827586207,
+        5
+      ],
+      "rect": [
+        555.0037995555236,
+        204.1209677419355,
+        282,
+        729
+      ],
+      "nodes": [
+        [
+          592,
+          210
+        ],
+        [
+          624.6017701325968,
+          439.2822580645161
+        ],
+        [
+          720.0828348147353,
+          674.4435483870968
+        ],
+        [
+          671.5760649786178,
+          909.6048387096774
+        ]
+      ],
+      "size": [
+        481,
+        620
+      ]
+    }
+  ]
+}

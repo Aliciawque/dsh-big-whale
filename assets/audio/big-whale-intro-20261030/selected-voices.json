@@ -1,0 +1,29 @@
+{
+  "version": 2,
+  "confirmedDate": "2026-10-30",
+  "identity": "Big Whale",
+  "confirmedBy": "Retain selected Sulafat and Leda voices; update platform-neutral character introduction",
+  "languages": {
+    "zh": {
+      "voice": "Sulafat",
+      "audio": "audio/big-whale-intro-20261030/zh/Big-Whale-ZH-Sulafat.wav",
+      "performanceData": "audio/big-whale-intro-20261030/zh/performance-data.json",
+      "sha256": "feec2f57fbcc120ddf371f7bf010400c4b33bc7e474388fa73354ea554d7ef1c",
+      "playbackGain": 0.7174534382154566
+    },
+    "en": {
+      "voice": "Sulafat",
+      "audio": "audio/big-whale-intro-20261030/en/Big-Whale-EN-Sulafat.wav",
+      "performanceData": "audio/big-whale-intro-20261030/en/performance-data.json",
+      "sha256": "f42821c7845b1663ccf4a4713ca2ad7938943ea8c4f31129ee5471460067ea1b",
+      "playbackGain": 0.7350591755434227
+    },
+    "ja": {
+      "voice": "Leda",
+      "audio": "audio/big-whale-intro-20261030/ja/Big-Whale-JA-Leda.wav",
+      "performanceData": "audio/big-whale-intro-20261030/ja/performance-data.json",
+      "sha256": "37180957d235c5634b2943505dcc2a1a4718720d65a8af3b70a18a439bb78aae",
+      "playbackGain": 0.468174289497014
+    }
+  }
+}

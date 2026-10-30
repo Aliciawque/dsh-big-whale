@@ -1,0 +1,17 @@
+{
+  "revision": "confirmed-20261029-v1",
+  "eyeSize": 96,
+  "eyeDistance": 96,
+  "mouthScale": 120,
+  "shiftUnit": "percent_of_visible_mouth_width",
+  "rotationUnit": "degrees",
+  "leftRotationSign": -1,
+  "rightRotationSign": 1,
+  "mouths": {
+    "A": { "shift": 10, "rotation": 4 },
+    "I": { "shift": 6, "rotation": 6.5 },
+    "U": { "shift": 35, "rotation": 6.5 },
+    "E": { "shift": 12, "rotation": 5 },
+    "O": { "shift": 30, "rotation": 3 }
+  }
+}

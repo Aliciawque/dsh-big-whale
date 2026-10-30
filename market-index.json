@@ -1,0 +1,62 @@
+{
+  "format": 1,
+  "title": {
+    "en": "Big Whale Coding Companion",
+    "zh": "大鲸鱼编程伙伴",
+    "ja": "大クジラ・コーディングパートナー"
+  },
+  "description": {
+    "en": "The author-maintained index for the Big Whale desktop companion.",
+    "zh": "大鲸鱼桌宠的作者维护索引。",
+    "ja": "大クジラの作者が管理するプラグインインデックスです。"
+  },
+  "plugins": [
+    {
+      "name": "dsh-big-whale",
+      "title": {
+        "en": "Big Whale",
+        "zh": "大鲸鱼",
+        "ja": "大クジラ"
+      },
+      "description": {
+        "en": "A whale-girl coding companion with trilingual voices, lip sync, expressions, idle motions and a giant bowl of rice when your context is compacted. Windows desktop or in-page display.",
+        "zh": "会陪你写代码的鲸鱼娘桌宠：中英日语音、连续口型、表情与待机动作；上下文压缩时捧起超大白米饭。支持 Windows 桌面及页内显示。",
+        "ja": "コードを書く時間に寄り添うクジラ娘。中英日の音声、リップシンク、表情、待機モーションを搭載。コンテキスト圧縮時には大きなご飯を持ちます。Windowsデスクトップとページ内表示に対応。"
+      },
+      "author": "Aliciawque",
+      "homepage": "https://github.com/Aliciawque/dsh-big-whale",
+      "repository": {
+        "url": "https://github.com/Aliciawque/dsh-big-whale"
+      },
+      "icon": "assets/generated/whale-menu-20261030/whale-button-v2.png",
+      "metadata": {
+        "keywords": [
+          "dsh",
+          "dsh-plugin",
+          "deepseek-harness",
+          "desktop-pet",
+          "avatar",
+          "companion",
+          "lip-sync",
+          "大鲸鱼",
+          "大クジラ",
+          "big whale",
+          "coding companion"
+        ]
+      },
+      "versions": [
+        {
+          "version": "0.6.0-rc.2",
+          "publishTimestamp": 1793351929,
+          "source": {
+            "type": "npm",
+            "registry": "https://registry.npmjs.org/"
+          },
+          "engines": {
+            "dsh": "0.2.1-rc.5"
+          }
+        }
+      ]
+    }
+  ]
+}

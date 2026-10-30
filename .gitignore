@@ -1,0 +1,11 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.npmrc
+*.local.*
+*.log
+work/
+review/
+.DS_Store
+Thumbs.db

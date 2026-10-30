@@ -1,0 +1,11 @@
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International
+
+License deed: https://creativecommons.org/licenses/by-nc-sa/4.0/
+Full legal code: https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.en
+
+This pointer accompanies the licensed character/derivative visual assets and
+synthetic character speech. Preserve attribution, identify modifications, use
+noncommercially and share adaptations under the required same license. The
+linked legal code is the governing license; this notice does not replace it.
+
+Character credits and source statements are listed in ATTRIBUTION.md.

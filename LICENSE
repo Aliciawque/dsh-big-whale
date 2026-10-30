@@ -1,0 +1,8 @@
+This distribution contains separately licensed code and character assets.
+
+1. Plugin/controller code: MIT. See LICENSES/MIT-plugin.txt.
+2. Mesh Avatar Studio runtime and local modifications: MIT. See LICENSES/MIT-mesh-avatar-studio.txt.
+3. Character and derivative visual assets, plus bundled synthetic character speech: CC BY-NC-SA 4.0. Attribution, noncommercial use and ShareAlike are required. See ATTRIBUTION.md and LICENSES/CC-BY-NC-SA-4.0.txt.
+4. Optional Electron runtime: its own license and bundled third-party notices apply.
+
+The MIT permissions for code do not remove restrictions on the character assets. This package does not grant a right to sell or commercially license the character.

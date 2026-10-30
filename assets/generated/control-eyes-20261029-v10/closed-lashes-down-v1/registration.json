@@ -1,0 +1,41 @@
+{
+  "source": "../closed-lashes-down-v1.png",
+  "width": 2172,
+  "height": 724,
+  "alphaMin": 0,
+  "alphaMax": 255,
+  "parts": [
+    {
+      "name": "left",
+      "file": "left.png",
+      "crop": [
+        75,
+        306,
+        1031,
+        535
+      ],
+      "width": 956,
+      "height": 229,
+      "bandCenterY": 103.5,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "8c057b8f2c483caf81d9c7d85e8ceb410eb84f21d3726667adebc6970fdfbe50"
+    },
+    {
+      "name": "right",
+      "file": "right.png",
+      "crop": [
+        1141,
+        305,
+        2096,
+        535
+      ],
+      "width": 955,
+      "height": 230,
+      "bandCenterY": 104.5,
+      "alphaMin": 0,
+      "alphaMax": 255,
+      "sha256": "1ae746de5a4891a9a7f81ad9e681bcd3a91513de31d59aeafafd375b338b748d"
+    }
+  ]
+}

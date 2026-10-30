@@ -1,0 +1,73 @@
+{
+  "name": "dsh-big-whale",
+  "version": "0.6.0-rc.2",
+  "description": "大鲸鱼 / Big Whale / 大クジラ: an animated coding companion with trilingual voices and lip sync for DeepSeek Harness.",
+  "type": "module",
+  "main": "lib/host.mjs",
+  "exports": {
+    ".": "./lib/host.mjs",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "bin": {
+    "big-whale-desktop": "bin/desktop.mjs"
+  },
+  "files": [
+    "lib/",
+    "desktop/",
+    "assets/",
+    "locale/",
+    "bin/",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "README.ja.md",
+    "LICENSE",
+    "LICENSES/",
+    "ATTRIBUTION.md",
+    "RELEASE.md",
+    "PRIVACY.md"
+  ],
+  "engines": {
+    "node": ">=22.17.0",
+    "dsh": "0.2.1-rc.5"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "desktop-pet",
+    "avatar",
+    "companion",
+    "lip-sync"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "tag": "next"
+  },
+  "optionalDependencies": {
+    "electron": "45.1.0"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-connection"
+      ]
+    }
+  },
+  "author": "Aliciawque",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aliciawque/dsh-big-whale.git"
+  },
+  "homepage": "https://github.com/Aliciawque/dsh-big-whale#readme",
+  "bugs": {
+    "url": "https://github.com/Aliciawque/dsh-big-whale/issues"
+  }
+}
