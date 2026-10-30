@@ -8,6 +8,8 @@
 
 <img src="docs/preview.png" width="330" alt="大鲸鱼编程桌宠全身预览">
 
+观看 [B站中文版功能演示](https://www.bilibili.com/video/BV17mxe6bEpe/)或 [YouTube 英文版](https://www.youtube.com/watch?v=cyWnZlAHyJU)。
+
 ## 可以做什么
 
 - 中、英、日三语录音和连续口型，讲话时也能切换表情。

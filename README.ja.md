@@ -8,6 +8,8 @@ DeepSeek Harness 用のクジラ娘コンパニオンです。コードを書く
 
 <img src="docs/preview.png" width="330" alt="大クジラの全身プレビュー">
 
+機能紹介動画：[YouTube 英語版](https://www.youtube.com/watch?v=cyWnZlAHyJU) · [Bilibili 中国語版](https://www.bilibili.com/video/BV17mxe6bEpe/)。
+
 ## 機能
 
 - 中国語・英語・日本語の収録音声と滑らかなリップシンク。会話中も表情を変更できます。

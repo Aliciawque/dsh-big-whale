@@ -8,6 +8,8 @@ A whale-girl desktop companion for DeepSeek Harness. She keeps you company while
 
 <img src="docs/preview.png" width="330" alt="Big Whale coding companion, full-body preview">
 
+Watch the [English feature demo on YouTube](https://www.youtube.com/watch?v=cyWnZlAHyJU) or the [Chinese demo on Bilibili](https://www.bilibili.com/video/BV17mxe6bEpe/).
+
 ## What she does
 
 - Chinese, English and Japanese recorded voices with smooth lip sync.
