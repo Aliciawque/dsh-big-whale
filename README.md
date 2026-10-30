@@ -43,6 +43,8 @@ Drag to place her; double-click to switch full body / upper body. Open the float
 
 Idle motions: natural breathing, body twist, side-to-side lean, shy sway and mixed showcase. Expressions: normal, happy, smiling eyes, unimpressed, surprised, tears, cute and playful anger, plus event-controlled selection.
 
+Below the idle-motion selector, adjust sway amplitude from 20% to 120% (default 80%). Changes take effect immediately and are saved across restarts. Natural breathing keeps its gentle baseline.
+
 The bundled voices need no Gemini or GLM key. DSH keeps its own model and provider settings. Arbitrary new text-to-speech is not included; phone timing within aligned words is estimated.
 
 ## Plugin markets

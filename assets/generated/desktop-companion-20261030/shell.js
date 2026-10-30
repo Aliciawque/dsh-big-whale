@@ -6,6 +6,7 @@ const get=async url=>{const response=await fetch(url);if(!response.ok)throw Erro
 const storage=(key,fallback)=>{try{return JSON.parse(localStorage.getItem(key))??fallback;}catch{return fallback;}};
 let environment=bridge?await bridge.environment():null,saved=storage('dsh-whale-desktop-layout-v1',{}),size=Number.isFinite(saved.size)?clamp(saved.size,170,340):240,position=null,hidden=false,menuOpen=false,drag=null,mouse={x:0,y:0},hitId=0,interactive=false,state={status:'idle',label:'陪你写代码'},lastMetrics={};
 const preferences={autoVoice:true,followPointer:true,bodyShowcase:true,bodyShowcaseGain:.8,idleMotion:'showcase',voiceLanguage:'zh',...storage('dsh-whale-desktop-preferences-v1',{})};
+preferences.bodyShowcaseGain=Number.isFinite(preferences.bodyShowcaseGain)?clamp(preferences.bodyShowcaseGain,.2,1.2):.8;
 const command=(type,extra={})=>frame.contentWindow?.postMessage({type,...extra},location.origin);
 let viewMode=saved.viewMode==='upper'?'upper':'full';
 const viewWidth=()=>size*(viewMode==='upper'?1.3:1);
@@ -36,7 +37,7 @@ function localize(){
   preferences.voiceLanguage=localeFor(preferences.voiceLanguage);const t=textFor(preferences.voiceLanguage);
   document.documentElement.lang={zh:'zh-CN',en:'en',ja:'ja'}[preferences.voiceLanguage];document.title=t.title;
   for(const element of document.querySelectorAll('[data-i18n]'))element.textContent=t[element.dataset.i18n];
-  for(const [id,key,attribute] of [['companion','companion','aria-label'],['model','model','title'],['menu','menu','aria-label'],['close-menu','closeMenu','aria-label'],['quit','quit','aria-label'],['quit','quit','title'],['language','language','aria-label'],['expression','expression','aria-label'],['idle-motion','idleMotion','aria-label'],['size','size','aria-label'],['voice','voice','aria-label']])$(id).setAttribute(attribute,t[key]);
+  for(const [id,key,attribute] of [['companion','companion','aria-label'],['model','model','title'],['menu','menu','aria-label'],['close-menu','closeMenu','aria-label'],['quit','quit','aria-label'],['quit','quit','title'],['language','language','aria-label'],['expression','expression','aria-label'],['idle-motion','idleMotion','aria-label'],['idle-gain','gain','aria-label'],['size','size','aria-label'],['voice','voice','aria-label']])$(id).setAttribute(attribute,t[key]);
   for(const [move,key] of [['-24,0','left'],['24,0','right'],['0,-24','up'],['0,24','down']])document.querySelector(`[data-move="${move}"]`).setAttribute('aria-label',t[key]);
   for(const option of $('expression').options)option.textContent=t.expressions[option.value];
   for(const option of $('idle-motion').options)option.textContent=t.motions[option.value];
@@ -45,7 +46,7 @@ function localize(){
   $('status').textContent=t.statuses[state.status]??t.offline;
 }
 function toggleMenu(open,focus=false){menuOpen=open;menu.hidden=!open;whale.setAttribute('aria-expanded',String(open));whale.setAttribute('aria-label',open?textFor(preferences.voiceLanguage).collapseMenu:textFor(preferences.voiceLanguage).openMenu);layout();hitTest();if(open)$('close-menu').focus();else if(focus)whale.focus();}
-function configure(){localize();for(const id of ['autoVoice','followPointer','bodyShowcase'])$(id).checked=Boolean(preferences[id]);$('language').value=preferences.voiceLanguage;$('idle-motion').value=preferences.idleMotion;command('dsh-whale-settings',{settings:{...preferences,cameraMode:viewMode,surface:bridge?'desktop':'preview'}});localStorage.setItem('dsh-whale-desktop-preferences-v1',JSON.stringify(preferences));}
+function configure(){localize();for(const id of ['autoVoice','followPointer','bodyShowcase'])$(id).checked=Boolean(preferences[id]);$('language').value=preferences.voiceLanguage;$('idle-motion').value=preferences.idleMotion;$('idle-gain').value=preferences.bodyShowcaseGain;$('idle-gain-label').textContent=Math.round(preferences.bodyShowcaseGain*100)+'%';command('dsh-whale-settings',{settings:{...preferences,cameraMode:viewMode,surface:bridge?'desktop':'preview'}});localStorage.setItem('dsh-whale-desktop-preferences-v1',JSON.stringify(preferences));}
 frame.addEventListener('load',()=>{configure();command('dsh-whale-state',{state});command('dsh-whale-expression',{expression:$('expression').value});});
 addEventListener('message',event=>{
   if(event.origin!==location.origin||event.source!==frame.contentWindow)return;const value=event.data??{};
@@ -76,6 +77,7 @@ addEventListener('keydown',event=>{if(event.key==='Escape'&&menuOpen){event.prev
 document.addEventListener('pointerdown',event=>{if(menuOpen&&!menu.contains(event.target)&&!whale.contains(event.target))toggleMenu(false);},true);
 for(const id of ['autoVoice','followPointer','bodyShowcase'])$(id).addEventListener('change',()=>{preferences[id]=$(id).checked;configure();});
 $('idle-motion').addEventListener('change',()=>{preferences.idleMotion=$('idle-motion').value;configure();});
+$('idle-gain').addEventListener('input',()=>{preferences.bodyShowcaseGain=Number($('idle-gain').value);configure();});
 $('expression').addEventListener('change',()=>command('dsh-whale-expression',{expression:$('expression').value}));
 $('language').addEventListener('change',()=>{preferences.voiceLanguage=$('language').value;configure();loadVoices();});
 $('intro').addEventListener('click',()=>command('dsh-whale-intro',{language:$('language').value}));$('stop').addEventListener('click',()=>command('dsh-whale-stop'));
