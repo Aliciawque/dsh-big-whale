@@ -1,6 +1,6 @@
 # Launch drafts / 宣传草稿 / 紹介文案
 
-Drafts only. These have not been posted to social media or submitted to another maintainer.
+Reusable launch drafts. A tailored trilingual introduction is now published in the official DSH community, and directory submissions are recorded in [submission status](MARKET_SUBMISSIONS.md). The platform-specific social-media drafts and video storyboard below have not been published.
 
 ## 核心定位
 
@@ -45,4 +45,4 @@ https://github.com/Aliciawque/dsh-big-whale
 | 21–26 s | Short Chinese / English / Japanese greeting cuts | 中英日三语 |
 | 26–30 s | Full-body preview and install command | 大鲸鱼 · DSH 编程桌宠 |
 
-建议渠道顺序：先在官方仓库的 Show Your Plugins! 发技术展示，再发 B站演示与安装教程，随后剪竖屏用于抖音／小红书，并用英文短版发 X。视频与帖子需另行发布；此文档只准备素材。
+官方仓库的 Show Your Plugins! 技术展示已发布，链接见投稿状态页。后续可制作 B站演示与安装教程，剪竖屏用于抖音／小红书，并用英文短版发 X。上述社交平台内容和视频尚未发布；此文档保留文案与分镜。
