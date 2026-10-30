@@ -1,12 +1,12 @@
 # 大鲸鱼 — 陪你写代码的桌宠
 
-[English](README.md) · [简体中文](README.zh.md) · [日本語](README.ja.md)
+[English](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.md) · [简体中文](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.zh.md) · [日本語](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.ja.md)
 
-[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.3)
+[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.4)
 
 给 DeepSeek Harness 使用的鲸鱼娘编程伙伴。写代码时陪着你，根据事件切换语音和表情；上下文压缩时，会捧起一碗超大的白米饭。
 
-<img src="docs/preview.png" width="330" alt="大鲸鱼编程桌宠全身预览">
+<img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/preview.png" width="330" alt="大鲸鱼编程桌宠全身预览">
 
 观看 [B站中文版功能演示](https://www.bilibili.com/video/BV17mxe6bEpe/)或 [YouTube 英文版](https://www.youtube.com/watch?v=cyWnZlAHyJU)。
 
@@ -23,7 +23,7 @@
 已测试 **DSH 0.2.1-rc.5**、**Node.js 22.17+**。请安装到已有的 Web 类型 profile；下面的 `web` 可替换为你的 profile 名称。
 
 ```sh
-dsh plugin --profile web add dsh-big-whale@0.6.0-rc.3
+dsh plugin --profile web add dsh-big-whale@0.6.0-rc.4
 dsh web
 ```
 
@@ -55,7 +55,7 @@ DSH 浏览器最小化后，她仍能留在桌面上；DSH 宿主进程需要保
 https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/market-index.json
 ```
 
-在启用「自定义插件市场」的 DSH profile 中，打开 **插件 → 发现 → 添加索引源**，添加上面的地址。社区目录的抓取、审核与官方收录各有独立流程，详见 [市场说明](MARKETPLACE.md)。
+在启用「自定义插件市场」的 DSH profile 中，打开 **插件 → 发现 → 添加索引源**，添加上面的地址。社区目录的抓取、审核与官方收录各有独立流程，详见 [市场说明](https://github.com/Aliciawque/dsh-big-whale/blob/main/MARKETPLACE.md)。
 
 ## 社区认可
 
@@ -67,4 +67,4 @@ https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/market-index.jso
 
 这是同人社区项目，非 DeepSeek 官方产品。图片包含 AI 辅助生成、分层和修整，语音为合成语音。
 
-[署名](ATTRIBUTION.md) · [许可](LICENSE) · [隐私](PRIVACY.md) · [验证记录](docs/VERIFICATION.md) · [宣传草稿](docs/PROMOTION.md) · [反馈](https://github.com/Aliciawque/dsh-big-whale/issues)
+[署名](https://github.com/Aliciawque/dsh-big-whale/blob/main/ATTRIBUTION.md) · [许可](https://github.com/Aliciawque/dsh-big-whale/blob/main/LICENSE) · [隐私](https://github.com/Aliciawque/dsh-big-whale/blob/main/PRIVACY.md) · [验证记录](https://github.com/Aliciawque/dsh-big-whale/blob/main/docs/VERIFICATION.md) · [宣传草稿](https://github.com/Aliciawque/dsh-big-whale/blob/main/docs/PROMOTION.md) · [反馈](https://github.com/Aliciawque/dsh-big-whale/issues)

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.0-rc.4 — 2026-10-30
+
+- Fix the npm preview image, language navigation and documentation links with absolute GitHub URLs.
+- Retain the RC3 runtime behavior; update reported release versions.
+
 ## 0.6.0-rc.3 — 2026-10-30
 
 - Add a persistent 20%–120% idle-motion amplitude slider with Chinese, English and Japanese labels.

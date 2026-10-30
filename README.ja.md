@@ -1,12 +1,12 @@
 # 大クジラ — コーディングパートナー
 
-[English](README.md) · [简体中文](README.zh.md) · [日本語](README.ja.md)
+[English](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.md) · [简体中文](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.zh.md) · [日本語](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.ja.md)
 
-[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.3)
+[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.4)
 
 DeepSeek Harness 用のクジラ娘コンパニオンです。コードを書く時間に寄り添い、イベントに合わせて声や表情を変えます。コンテキストが圧縮されると、大きなご飯を持ちます。
 
-<img src="docs/preview.png" width="330" alt="大クジラの全身プレビュー">
+<img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/preview.png" width="330" alt="大クジラの全身プレビュー">
 
 機能紹介動画：[YouTube 英語版](https://www.youtube.com/watch?v=cyWnZlAHyJU) · [Bilibili 中国語版](https://www.bilibili.com/video/BV17mxe6bEpe/)。
 
@@ -23,7 +23,7 @@ DeepSeek Harness 用のクジラ娘コンパニオンです。コードを書く
 動作確認済み：**DSH 0.2.1-rc.5**、**Node.js 22.17+**。既存の Web 用 profile にインストールしてください。`web` は使用中の profile 名に置き換えられます。
 
 ```sh
-dsh plugin --profile web add dsh-big-whale@0.6.0-rc.3
+dsh plugin --profile web add dsh-big-whale@0.6.0-rc.4
 dsh web
 ```
 
@@ -55,7 +55,7 @@ DSH のフォーマット1検証に合格したインデックス：
 https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/market-index.json
 ```
 
-Custom Plugin Market を有効にした profile で、**Plugins → Discover → Add index source** から追加してください。コミュニティの収集・審査と公式掲載は別の手続きです。[詳細](MARKETPLACE.md)。
+Custom Plugin Market を有効にした profile で、**Plugins → Discover → Add index source** から追加してください。コミュニティの収集・審査と公式掲載は別の手続きです。[詳細](https://github.com/Aliciawque/dsh-big-whale/blob/main/MARKETPLACE.md)。
 
 ## コミュニティへの賛同
 
@@ -67,4 +67,4 @@ Custom Plugin Market を有効にした profile で、**Plugins → Discover →
 
 DeepSeek 公式ではないファン制作プロジェクトです。画像には AI による制作・調整を含み、音声は合成音声です。
 
-[クレジット](ATTRIBUTION.md) · [ライセンス](LICENSE) · [プライバシー](PRIVACY.md) · [検証](docs/VERIFICATION.md) · [紹介文案](docs/PROMOTION.md) · [Issues](https://github.com/Aliciawque/dsh-big-whale/issues)
+[クレジット](https://github.com/Aliciawque/dsh-big-whale/blob/main/ATTRIBUTION.md) · [ライセンス](https://github.com/Aliciawque/dsh-big-whale/blob/main/LICENSE) · [プライバシー](https://github.com/Aliciawque/dsh-big-whale/blob/main/PRIVACY.md) · [検証](https://github.com/Aliciawque/dsh-big-whale/blob/main/docs/VERIFICATION.md) · [紹介文案](https://github.com/Aliciawque/dsh-big-whale/blob/main/docs/PROMOTION.md) · [Issues](https://github.com/Aliciawque/dsh-big-whale/issues)

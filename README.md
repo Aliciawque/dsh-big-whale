@@ -1,12 +1,12 @@
 # Big Whale — a coding companion
 
-[English](README.md) · [简体中文](README.zh.md) · [日本語](README.ja.md)
+[English](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.md) · [简体中文](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.zh.md) · [日本語](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.ja.md)
 
-[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.3)
+[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.4)
 
 A whale-girl desktop companion for DeepSeek Harness. She keeps you company while you code, reacts to events, and picks up a giant bowl of rice when your context is compacted.
 
-<img src="docs/preview.png" width="330" alt="Big Whale coding companion, full-body preview">
+<img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/preview.png" width="330" alt="Big Whale coding companion, full-body preview">
 
 Watch the [English feature demo on YouTube](https://www.youtube.com/watch?v=cyWnZlAHyJU) or the [Chinese demo on Bilibili](https://www.bilibili.com/video/BV17mxe6bEpe/).
 
@@ -23,7 +23,7 @@ Watch the [English feature demo on YouTube](https://www.youtube.com/watch?v=cyWn
 Tested with **DSH 0.2.1-rc.5** and **Node.js 22.17+**. Use your existing Web-backed DSH profile; replace `web` with its name.
 
 ```sh
-dsh plugin --profile web add dsh-big-whale@0.6.0-rc.3
+dsh plugin --profile web add dsh-big-whale@0.6.0-rc.4
 dsh web
 ```
 
@@ -55,7 +55,7 @@ The repository includes a validated DSH format-1 index:
 https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/market-index.json
 ```
 
-In a DSH profile with Custom Plugin Market enabled, open **Plugins → Discover → Add index source** and add that URL. Community-directory discovery and official inclusion are separate processes. See [market details](MARKETPLACE.md).
+In a DSH profile with Custom Plugin Market enabled, open **Plugins → Discover → Add index source** and add that URL. Community-directory discovery and official inclusion are separate processes. See [market details](https://github.com/Aliciawque/dsh-big-whale/blob/main/MARKETPLACE.md).
 
 ## Community acknowledgement
 
@@ -67,4 +67,4 @@ Plugin code has MIT notices. Character design and derivative visual assets are *
 
 This is a fan-made community project, not an official DeepSeek product. Artwork uses AI-assisted generation and refinement; voices are synthetic.
 
-[Attribution](ATTRIBUTION.md) · [License](LICENSE) · [Privacy](PRIVACY.md) · [Validation](docs/VERIFICATION.md) · [Promotion drafts](docs/PROMOTION.md) · [Issues](https://github.com/Aliciawque/dsh-big-whale/issues)
+[Attribution](https://github.com/Aliciawque/dsh-big-whale/blob/main/ATTRIBUTION.md) · [License](https://github.com/Aliciawque/dsh-big-whale/blob/main/LICENSE) · [Privacy](https://github.com/Aliciawque/dsh-big-whale/blob/main/PRIVACY.md) · [Validation](https://github.com/Aliciawque/dsh-big-whale/blob/main/docs/VERIFICATION.md) · [Promotion drafts](https://github.com/Aliciawque/dsh-big-whale/blob/main/docs/PROMOTION.md) · [Issues](https://github.com/Aliciawque/dsh-big-whale/issues)

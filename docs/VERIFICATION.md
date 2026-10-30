@@ -1,4 +1,8 @@
-# Verification — 0.6.0-rc.3
+# Verification — 0.6.0-rc.4
+
+RC4 corrects npm-facing README URLs and release version strings. It does not change runtime logic. Its exact archive is installed in a separate Web-backed DSH profile and checked file by file. All runtime assets match the RC3 archive; the host/desktop changes only report the new version. The prior RC3 UI checks below remain the behavior evidence. The public npm archive is compared after publication, followed by a fresh registry installation.
+
+## RC3 verification
 
 Host: DSH 0.2.1-rc.5, Windows, Node.js 24.11.1.
 
