@@ -10,9 +10,30 @@ A whale-girl desktop companion for DeepSeek Harness. She keeps you company while
 
 Watch the [English feature demo on YouTube](https://www.youtube.com/watch?v=cyWnZlAHyJU) or the [Chinese demo on Bilibili](https://www.bilibili.com/video/BV17mxe6bEpe/).
 
-### Halloween outfit
+## Halloween witch outfit
 
-Choose **Outfit → Little witch** in the companion menu. The witch has a layered hat, swaying ghost lantern, a matching rice pose and a short Chinese / English / Japanese greeting on a user-initiated outfit change. Both outfits use the same body size. The menu opens beside her; narrow windows use separate character and menu rows, restoring the saved size when closed. The idle-amplitude slider remains available.
+Open the floating whale menu and choose **Outfit → Little witch**. Switch back with **Everyday maid**. The menu button becomes a small pumpkin while the witch outfit is selected.
+
+- **Layered costume:** witch hat, capelet, chest bow, sleeves, cuffs and layered skirt, with separate rebound physics.
+- **Ghost lantern:** carried in her right hand, with delayed left/right swing and a repeating dim / half-bright / bright glow.
+- **Matching rice pose:** witch sleeves and hands hold the giant rice bowl; use **Rice pose** to preview it.
+- **Shared controls:** both outfits keep the same body size, expressions, idle motions, mouse following and speech controls. Menus open beside her, and the idle-amplitude slider remains available.
+
+A user-initiated switch to the witch outfit plays the greeting in the selected language:
+
+| 中文 | English | 日本語 |
+| --- | --- | --- |
+| 我是小魔女，不给糖就捣乱！ | I'm a little witch. Trick or treat! | 私は小さな魔女。お菓子をくれなきゃ、いたずらしちゃうよ！ |
+
+<table>
+<tr><th>Witch upper-body detail · 2048 × 2560</th><th>Witch full-body view · 2048 × 3640</th></tr>
+<tr>
+<td align="center"><a href="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/witch-halfbody-hd.png"><img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/witch-halfbody-hd.png" height="520" alt="Witch upper-body detail"></a></td>
+<td align="center"><a href="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/witch-fullbody-hd.png"><img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/witch-fullbody-hd.png" height="520" alt="Witch full-body view"></a></td>
+</tr>
+</table>
+
+Native renders from the released **0.6.0-rc.5** model. Click either image to open the full-resolution PNG.
 
 
 ## What she does
