@@ -10,9 +10,30 @@ DeepSeek Harness 用のクジラ娘コンパニオンです。コードを書く
 
 機能紹介動画：[YouTube 英語版](https://www.youtube.com/watch?v=cyWnZlAHyJU) · [Bilibili 中国語版](https://www.bilibili.com/video/BV17mxe6bEpe/)。
 
-### ハロウィン衣装
+## ハロウィンの魔女衣装
 
-メニューの **衣装 → 小さな魔女** で切り替えます。レイヤー分けした帽子、揺れて光るおばけランタン、専用のご飯ポーズ、ユーザー操作の着替えに合わせた中英日の短いセリフがあります。両衣装の体の大きさは共通です。メニューはキャラクターの横に開き、狭い画面では上下に分かれます。閉じると保存したサイズに戻ります。待機モーションの振幅スライダーも維持しています。
+浮かぶクジラのメニューで **衣装 → 小さな魔女** を選びます。**いつものメイド服** で元に戻せます。魔女衣装ではメニューボタンが小さなカボチャになります。
+
+- **レイヤー構成：** 帽子、ケープ、胸のリボン、袖、カフス、多段スカートに個別の揺れと反動があります。
+- **おばけランタン：** 右手に持ったランタンが手より遅れて左右に揺れ、暗い／半分の明るさ／明るい状態を繰り返します。
+- **専用ご飯ポーズ：** 魔女の袖と両手で大きな白いご飯を持ちます。**ご飯ポーズ** で確認できます。
+- **共通の操作：** 両衣装の体の大きさは共通です。表情、待機モーション、マウス追従、音声操作を引き継ぎ、メニューはキャラクターを避けて開きます。振幅スライダーも利用できます。
+
+ユーザー操作で魔女衣装に切り替えると、選択中の言語で着替えのセリフを再生します。
+
+| 中文 | English | 日本語 |
+| --- | --- | --- |
+| 我是小魔女，不给糖就捣乱！ | I'm a little witch. Trick or treat! | 私は小さな魔女。お菓子をくれなきゃ、いたずらしちゃうよ！ |
+
+<table>
+<tr><th>魔女衣装・上半身 · 2048 × 2560</th><th>魔女衣装・全身 · 2048 × 3640</th></tr>
+<tr>
+<td align="center"><a href="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/witch-halfbody-hd.png"><img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/witch-halfbody-hd.png" height="520" alt="魔女衣装・上半身"></a></td>
+<td align="center"><a href="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/witch-fullbody-hd.png"><img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/witch-fullbody-hd.png" height="520" alt="魔女衣装・全身"></a></td>
+</tr>
+</table>
+
+公開済み **0.6.0-rc.5** モデルから直接レンダリングした画像です。クリックすると原寸PNGを表示できます。
 
 
 ## 機能

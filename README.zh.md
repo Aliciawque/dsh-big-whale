@@ -10,9 +10,30 @@
 
 观看 [B站中文版功能演示](https://www.bilibili.com/video/BV17mxe6bEpe/)或 [YouTube 英文版](https://www.youtube.com/watch?v=cyWnZlAHyJU)。
 
-### 万圣节小魔女套装
+## 万圣节小魔女套装
 
-在桌宠菜单中选择 **套装 → 小魔女**。魔女拥有分层帽子、摇摆发光的鬼魂提灯、配套捧饭动作，主动换装时会按当前语言说中／英／日台词。两套服装的身体大小一致。菜单会避开人物，窄窗口采用上下分区，收起后恢复保存的大小；待机动作幅度滑块保留。
+点击游动的小鲸鱼，在 **套装 → 小魔女** 切换装扮；选择 **日常女仆** 即可换回。魔女套使用小南瓜菜单按钮。
+
+- **分层服装：** 女巫帽、披风、胸前蝴蝶结、袖子、袖口和多层裙摆分别保留回弹物理。
+- **鬼魂提灯：** 右手提着复古灯，灯体有滞后左右摇摆，亮度按暗色／半亮／亮循环。
+- **专属捧饭：** 魔女袖子和双手捧着超大白米饭，可点击 **捧饭预览** 查看。
+- **通用调控：** 两套服装的身体大小一致，表情、待机动作、鼠标跟随与语音控制通用；菜单避开人物展开，待机动作幅度滑块保留。
+
+主动切换为小魔女时，会按当前所选语言播放换装台词：
+
+| 中文 | English | 日本語 |
+| --- | --- | --- |
+| 我是小魔女，不给糖就捣乱！ | I'm a little witch. Trick or treat! | 私は小さな魔女。お菓子をくれなきゃ、いたずらしちゃうよ！ |
+
+<table>
+<tr><th>魔女套半身细节 · 2048 × 2560</th><th>魔女套全身展示 · 2048 × 3640</th></tr>
+<tr>
+<td align="center"><a href="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/witch-halfbody-hd.png"><img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/witch-halfbody-hd.png" height="520" alt="魔女套半身细节"></a></td>
+<td align="center"><a href="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/witch-fullbody-hd.png"><img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/witch-fullbody-hd.png" height="520" alt="魔女套全身展示"></a></td>
+</tr>
+</table>
+
+截图由已发布的 **0.6.0-rc.5** 模型原生渲染。点击任意图片可查看完整分辨率 PNG。
 
 
 ## 可以做什么
