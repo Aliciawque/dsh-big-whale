@@ -61,7 +61,7 @@ async function playIntro(next){
   finally{if(token===speechToken)loading=false;}
 }
 async function playDefault(id,request={source:'manual',priority:90}){
-  if(id==='halloween-transform')return playOutfitLine(request.language??preferredLanguage);
+  if(id==='halloween-transform')return playOutfitLine(request.language??preferredLanguage,request);
   if(request.source==='manual')policy.manual();
   const token=++speechToken;loading=true;if(!await pauseForSwitch(token))return;message.textContent='正在准备默认语音…';
   try{
@@ -75,9 +75,9 @@ async function playDefault(id,request={source:'manual',priority:90}){
   }catch(error){if(token!==speechToken)return;await voiceChannel.release();message.textContent=error.name==='NotAllowedError'?'再次点击播放按钮允许声音':error.message;announceVoice('error',message.textContent);}
   finally{if(token===speechToken)loading=false;}
 }
-async function playOutfitLine(next=preferredLanguage){
+async function playOutfitLine(next=preferredLanguage,request={source:'outfit',priority:95}){
   policy.manual();const token=++speechToken;loading=true;if(!await pauseForSwitch(token))return;
-  try{outfitManifest??=await json(new URL('audio/halloween-voices-20261031/manifest.json',root));const language=normalizeVoiceLanguage(next),clip=outfitManifest.languages[language],cacheKey='halloween-'+language;if(!tracks.has(cacheKey))tracks.set(cacheKey,await json(new URL(clip.performanceData,root)));const track=tracks.get(cacheKey);if(track.audio!==clip.audio)throw Error('Costume voice registration mismatch');await activate(track,clip.sha256,language,{kind:'halloween',id:'halloween-transform',label:clip.text,expression:'happy',source:'outfit',priority:95},token);}
+  try{outfitManifest??=await json(new URL('audio/halloween-voices-20261031/manifest.json',root));const language=normalizeVoiceLanguage(next),clip=outfitManifest.languages[language],cacheKey='halloween-'+language;if(!tracks.has(cacheKey))tracks.set(cacheKey,await json(new URL(clip.performanceData,root)));const track=tracks.get(cacheKey);if(track.audio!==clip.audio)throw Error('Costume voice registration mismatch');await activate(track,clip.sha256,language,{kind:'halloween',id:'halloween-transform',label:clip.text,expression:'happy',source:request.source??'outfit',priority:request.priority??95},token);}
   catch(error){if(token!==speechToken)return;await voiceChannel.release();message.textContent=error.message;announceVoice('error',message.textContent);}finally{if(token===speechToken)loading=false;}
 }
 async function switchOutfit(value,announce=false){
