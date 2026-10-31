@@ -1,4 +1,17 @@
-# Verification — 0.6.0-rc.4
+# Verification — 0.6.0-rc.5
+
+## RC5 candidate checks (2026-10-31)
+
+- Seven Node regression tests pass: 1,260 menu placements, 400 outfit reference points, outfit load cancellation/retry/caching, 3,600-frame costume stability and 3,600-frame lantern stability.
+- Release checks parse JSON, check all 47 runtime JavaScript files, verify 60 costume texture/matte references and hash all three Halloween recordings against their lip-sync tracks.
+- The DSH format-1 validator accepts the updated market index.
+- The exact 299-file npm archive installs into a separate DSH 0.2.1-rc.5 Web-backed profile; all installed files match the artifact sources. The user's normal profile is not replaced.
+- A real Windows Chromium DSH session loads both outfits through the in-page fallback, displays the amplitude slider and plays the three Halloween tracks with mouth movement. Final browser evidence is retained in the local release report.
+- Earlier full-body, upper-body and narrow-window browser checks showed no menu/character overlap. The outfits share body scale, origin and foot baseline. Costume visual acceptance remains subjective.
+
+This run validates Windows Web rendering and an isolated package installation. It does not establish macOS/Linux rendering or repeat every historical native-Electron/LLM event scenario. CI, PR review and public-registry verification are recorded separately after they complete. Historical RC4 evidence follows.
+
+## RC4 verification
 
 RC4 corrects npm-facing README URLs and release version strings. It does not change runtime logic. Its exact archive is installed in a separate Web-backed DSH profile and checked file by file. All runtime assets match the RC3 archive; the host/desktop changes only report the new version. The prior RC3 UI checks below remain the behavior evidence. The public npm archive is compared after publication, followed by a fresh registry installation.
 

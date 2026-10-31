@@ -1,0 +1,12 @@
+import{createCurrentAvatar}from'./avatar-halloween.js';import{createCostumePhysics}from'./physics.js';import{createLanternPhysics}from'./lantern-physics.js';import{createRig}from'../control-body-20261029-v15/runtime/engine/rig.js';import{sampleLanternMount,lanternVertex}from'./deform.js';
+export async function createWitchCompanion(engine){
+ const base=await createCurrentAvatar(engine),data=await fetch(new URL('./registration.json',import.meta.url)).then(r=>r.json()),physics=createCostumePhysics(data.parts),lantern=createLanternPhysics(data.parts.find(p=>p.key==='lanternFrame').pendulum),geometry=createRig(base.rig),lamp=data.parts.find(p=>p.key==='lanternFrame'),surface=document.createElement('canvas'),g=surface.getContext('2d');let time=0,lastPhysics=null;
+ base.avatar.setAutoIdle(false);base.avatar.setAutoMotion(false);
+ return{...base,surface,viewFrame:{x:0,y:-100,width:base.rig.image.width,height:1772},renderPadding:360/base.rig.image.height,get costumePhysics(){return lastPhysics;},draw(p,mode,dt,speech,action){
+  time+=dt;const P={...p,hwReviewGroup:'all',hwLanternVisible:1,hwLanternTime:time,hwLanternLight:.12+.88*(.5-.5*Math.cos(time*2*Math.PI/5.4))};P.poseArmL=(P.poseArmL??0)+2.5;P.poseElbowL=(P.poseElbowL??0)+2;
+  Object.assign(P,physics.update(P,dt,true,1.1).parameters);const state=lantern.update(sampleLanternMount(geometry,lamp,P),dt,true,1.1);P.hwLanternSwing=state.angle;lastPhysics={lanternAngle:state.angle,lanternFrequency:state.frequency,hatYaw:P.hwHatYaw};
+  const result=base.draw(P,mode,dt,speech,action),projection=base.projection,s=projection.scale,w=Math.round(base.rig.image.width*s),h=Math.round(1772*s);if(surface.width!==w||surface.height!==h){surface.width=w;surface.height=h;}g.clearRect(0,0,surface.width,surface.height);g.drawImage(base.surface,projection.x,projection.y-100*s,base.rig.image.width*s,1772*s,0,0,surface.width,surface.height);
+  if(P.hwLanternVisible&&(result.artwork?.riceMix??0)<.001){const center=lanternVertex(geometry,lamp,198,940,P,{gain:0},[0,0]),x=center[0]*s,y=(center[1]+100)*s,r=75*s;g.save();g.globalCompositeOperation='screen';const glow=g.createRadialGradient(x,y,4*s,x,y,r);glow.addColorStop(0,'rgba(100,230,255,'+(.19*P.hwLanternLight)+')');glow.addColorStop(1,'rgba(60,160,220,0)');g.fillStyle=glow;g.fillRect(x-r,y-r,r*2,r*2);g.restore();}
+  if(result.focus)result.focus=[result.focus[0],(result.focus[1]/1920*base.rig.image.height+100)/1772*1920];return result;
+ }};
+}

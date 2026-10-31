@@ -2,13 +2,18 @@
 
 [English](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.md) · [简体中文](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.zh.md) · [日本語](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.ja.md)
 
-[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.4)
+[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.5)
 
 A whale-girl desktop companion for DeepSeek Harness. She keeps you company while you code, reacts to events, and picks up a giant bowl of rice when your context is compacted.
 
 <img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/preview.png" width="330" alt="Big Whale coding companion, full-body preview">
 
 Watch the [English feature demo on YouTube](https://www.youtube.com/watch?v=cyWnZlAHyJU) or the [Chinese demo on Bilibili](https://www.bilibili.com/video/BV17mxe6bEpe/).
+
+### Halloween outfit
+
+Choose **Outfit → Little witch** in the companion menu. The witch has a layered hat, swaying ghost lantern, a matching rice pose and a short Chinese / English / Japanese greeting on a user-initiated outfit change. Both outfits use the same body size. The menu opens beside her; narrow windows use separate character and menu rows, restoring the saved size when closed. The idle-amplitude slider remains available.
+
 
 ## What she does
 
@@ -23,7 +28,7 @@ Watch the [English feature demo on YouTube](https://www.youtube.com/watch?v=cyWn
 Tested with **DSH 0.2.1-rc.5** and **Node.js 22.17+**. Use your existing Web-backed DSH profile; replace `web` with its name.
 
 ```sh
-dsh plugin --profile web add dsh-big-whale@0.6.0-rc.4
+dsh plugin --profile web add dsh-big-whale@0.6.0-rc.5
 dsh web
 ```
 

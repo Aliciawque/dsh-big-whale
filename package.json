@@ -1,6 +1,6 @@
 {
   "name": "dsh-big-whale",
-  "version": "0.6.0-rc.4",
+  "version": "0.6.0-rc.5",
   "description": "大鲸鱼 / Big Whale / 大クジラ: an animated coding companion with trilingual voices and lip sync for DeepSeek Harness.",
   "type": "module",
   "main": "lib/host.mjs",
@@ -69,5 +69,9 @@
   "homepage": "https://github.com/Aliciawque/dsh-big-whale#readme",
   "bugs": {
     "url": "https://github.com/Aliciawque/dsh-big-whale/issues"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "check:release": "node scripts/check-release.mjs"
   }
 }

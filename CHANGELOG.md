@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.0-rc.5 — 2026-10-31
+
+- Add the layered Halloween witch outfit, delayed hat/lantern physics, pumpkin menu button, witch rice pose and trilingual outfit greeting.
+- Keep the menu clear of the character across full-body, upper-body and narrow windows.
+- Align both outfits to the same body scale and foot baseline without stretching the artwork.
+- Preserve the idle-amplitude control and DSH in-page fallback.
+- Add release asset checks and CI regression tests.
+
 ## 0.6.0-rc.4 — 2026-10-30
 
 - Fix the npm preview image, language navigation and documentation links with absolute GitHub URLs.
