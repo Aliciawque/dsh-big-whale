@@ -1,5 +1,6 @@
 import { createCurrentAvatar, PARAMS } from '../control-body-20261030-v16/avatar.js';
 import {renderQuality} from './render-quality.js';
+import {bodyFramePlacement} from './body-frame.js';
 import { sampleMouthWeights } from '../head-intro-20261029-v1/performance.js?v=2';
 import {sampleIdleMotion,normalizeIdleMotion} from './idle-motions.js';
 import {createInteractionPolicy} from './behavior.js';
@@ -7,13 +8,14 @@ import {createDragPhysics} from './drag-physics.js';
 import {normalizeVoiceLanguage,selectVoiceClip,voiceTrackKey} from './voice-languages.js';
 import {textFor} from '../desktop-companion-20261030/i18n.js';
 import {createVoiceChannel} from './voice-channel.js';
-const engine=document.getElementById('engine'),canvas=document.getElementById('pet'),context=canvas.getContext('2d'),message=document.getElementById('status');
+import {createOutfitSwitcher,normalizeOutfit} from './outfits.js';
+let engine=document.getElementById('engine');const canvas=document.getElementById('pet'),context=canvas.getContext('2d'),message=document.getElementById('status');
 const root=new URL('../../',import.meta.url),origin=location.origin,defaults=Object.fromEntries(PARAMS.map(p=>[p.id,p.def]));
 const clamp=(v,min=0,max=1)=>Math.max(min,Math.min(max,v)),smooth=v=>{v=clamp(v);return v*v*(3-2*v);};
 const expressions={normal:{},happy:{browExpression:4,mouthExpression:4},smile:{eyeLOpen:0,eyeROpen:0,eyeSmile:1,eyeSmileL:1,browExpression:4},cold:{eyeLOpen:.5,eyeROpen:.5,browExpression:3,faceShade:1},surprised:{eyeLOpen:1.08,eyeROpen:1.08,browExpression:5,mouthOpen:.32,mouthForm:.55},tears:{eyeExpression:1,browExpression:2,mouthExpression:3},cat:{browExpression:4,mouthExpression:2}};
 expressions.angry={browExpression:1};
 const autoExpression={idle:'normal',thinking:'normal',working:'normal',waiting:'surprised',success:'happy',error:'cold',compacting:'happy'};
-let current,state={status:'idle'},override='auto',pointer={x:0,y:0},time=0,last=performance.now(),previousPaint=0,frameCount=0,renderMs=0,raf;
+let current,outfits,outfitManifest,state={status:'idle'},override='auto',pointer={x:0,y:0},time=0,last=performance.now(),previousPaint=0,frameCount=0,renderMs=0,raf;
 let data=null,language='zh',preferredLanguage='zh',audio=new Audio(),speechToken=0,selection,voiceIndex;
 const interactiveMode=new URLSearchParams(location.search).get('interactive')==='1',policy=createInteractionPolicy();
 let settings={autoVoice:true,followPointer:true,bodyShowcase:true,bodyShowcaseGain:.8},loading=false,riceUntil=0,gestureAt=-100,clickKind='none',pointerDown=null;
@@ -29,9 +31,10 @@ function announceVoice(event,error=''){
 async function activate(track,expectedHash,next,info,token){
   if(token!==speechToken)return;
   if(track.sourceSHA256!==expectedHash)throw Error('音频和口型时间轴不匹配');
-  const grant=await voiceChannel.claim({source:info.source,clipId:info.id,signalId:info.signalId,duration:track.duration,priority:info.priority,expiresAt:info.expiresAt});
+  const grant=await voiceChannel.claim({source:info.source==='outfit'?'manual':info.source,clipId:info.id,signalId:info.signalId,duration:track.duration,priority:info.priority,expiresAt:info.expiresAt});
   if(token!==speechToken)return;
   if(!grant.granted){message.textContent=info.source==='manual'?(textFor(preferredLanguage).voiceBusy??'伙伴正在讲话，请稍等'):'';return;}
+  if(info.source==='outfit'&&outfits?.selected!=='witch'){await voiceChannel.release();return;}
   if((info.source==='event'&&!policy.isCurrent(info))||(info.source==='drag'&&!pointerDown?.dragged)){await voiceChannel.release();return;}
   data=track;language=next;playback=info;metrics={frames:0,maxOpen:0,shapes:new Set()};
   audio.volume=clamp(info.playbackGain??1,0,1);
@@ -58,6 +61,7 @@ async function playIntro(next){
   finally{if(token===speechToken)loading=false;}
 }
 async function playDefault(id,request={source:'manual',priority:90}){
+  if(id==='halloween-transform')return playOutfitLine(request.language??preferredLanguage,request);
   if(request.source==='manual')policy.manual();
   const token=++speechToken;loading=true;if(!await pauseForSwitch(token))return;message.textContent='正在准备默认语音…';
   try{
@@ -71,8 +75,18 @@ async function playDefault(id,request={source:'manual',priority:90}){
   }catch(error){if(token!==speechToken)return;await voiceChannel.release();message.textContent=error.name==='NotAllowedError'?'再次点击播放按钮允许声音':error.message;announceVoice('error',message.textContent);}
   finally{if(token===speechToken)loading=false;}
 }
+async function playOutfitLine(next=preferredLanguage,request={source:'outfit',priority:95}){
+  policy.manual();const token=++speechToken;loading=true;if(!await pauseForSwitch(token))return;
+  try{outfitManifest??=await json(new URL('audio/halloween-voices-20261031/manifest.json',root));const language=normalizeVoiceLanguage(next),clip=outfitManifest.languages[language],cacheKey='halloween-'+language;if(!tracks.has(cacheKey))tracks.set(cacheKey,await json(new URL(clip.performanceData,root)));const track=tracks.get(cacheKey);if(track.audio!==clip.audio)throw Error('Costume voice registration mismatch');await activate(track,clip.sha256,language,{kind:'halloween',id:'halloween-transform',label:clip.text,expression:'happy',source:request.source??'outfit',priority:request.priority??95},token);}
+  catch(error){if(token!==speechToken)return;await voiceChannel.release();message.textContent=error.message;announceVoice('error',message.textContent);}finally{if(token===speechToken)loading=false;}
+}
+async function switchOutfit(value,announce=false){
+  if(!outfits)return;
+  if(normalizeOutfit(value)!=='witch'&&playback?.source==='outfit')stopSpeech();
+  try{await outfits.select(value,announce);}catch(error){message.textContent=error.message;parent.postMessage({type:'dsh-whale-model-error',error:error.message},origin);}
+}
 function stopSpeech(quiet=false){speechToken++;loading=false;audio.pause();audio.currentTime=0;voiceChannel.release();message.textContent='';if(quiet)policy.suspend();announceVoice('stopped');}
-function configure(value){
+function configure(value,options={}){
   settings={...settings,...value};
   preferredLanguage=normalizeVoiceLanguage(settings.voiceLanguage??preferredLanguage);settings.idleMotion=normalizeIdleMotion(settings.idleMotion);
   if(['full','upper'].includes(settings.cameraMode))cameraMode=settings.cameraMode;
@@ -80,6 +94,7 @@ function configure(value){
   settings.bodyShowcaseGain=Number.isFinite(settings.bodyShowcaseGain)?clamp(settings.bodyShowcaseGain,.2,1.2):.8;
   policy.configure(interactiveMode&&settings.autoVoice&&document.visibilityState!=='hidden');
   if(!settings.autoVoice&&playback?.source==='event')stopSpeech();
+  if(Object.hasOwn(value,'outfit'))switchOutfit(value.outfit,Boolean(options.outfitChanged));
 }
 function schedule(){
   if(!interactiveMode||document.visibilityState==='hidden'||loading)return;
@@ -91,7 +106,7 @@ function receive(event){
   if(event.origin!==origin||event.source!==parent)return;
   const value=event.data??{};
   if(value.type==='dsh-whale-state'&&autoExpression[value.state?.status]){state=value.state;configure({});policy.ingest(state);schedule();}
-  if(value.type==='dsh-whale-settings')configure(value.settings??{});
+  if(value.type==='dsh-whale-settings')configure(value.settings??{},{outfitChanged:value.outfitChanged});
   if(value.type==='dsh-whale-expression'&&(value.expression==='auto'||expressions[value.expression]))override=value.expression;
   if(value.type==='dsh-whale-gaze')pointer={x:clamp(value.x,-1,1),y:clamp(value.y,-1,1)};
   if(value.type==='dsh-whale-intro')playIntro(value.language??'zh');
@@ -190,18 +205,19 @@ function paint(now){
   const speech=speaking?{active:true,weights:sampleMouthWeights(data,audio.currentTime).weights}:null;
   const quality=renderQuality(innerWidth,innerHeight,devicePixelRatio,faceView?'face':cameraMode,current.rig.image.width/current.rig.image.height);
   const [w,h]=quality.output;
-  engine.style.width=quality.css[0]+'px';engine.style.height=quality.css[1]+'px';
+  engine.style.width=quality.css[0]+'px';engine.style.height=quality.css[1]*(1+(current.renderPadding??0))+'px';
   const started=performance.now();const result=current.draw(p,'normal',dt,speech,{rice:holdingRice});renderMs=performance.now()-started;
   if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}
   context.clearRect(0,0,w,h);context.imageSmoothingEnabled=true;context.imageSmoothingQuality='high';
-  const surface=current.surface,scale=Math.min(w/surface.width,h/surface.height)*.98;
+  const surface=current.surface;
+  let bodyFrame=null;
   if(faceView){
     const sw=surface.width*.56,sh=Math.min(surface.height,sw*h/w),cx=result.focus[0]/1080*surface.width,cy=result.focus[1]/1920*surface.height;
     context.drawImage(surface,clamp(cx-sw/2,0,surface.width-sw),clamp(cy-sh*.38,0,surface.height-sh),sw,sh,0,0,w,h);
   }else{
     cameraMix+=((cameraMode==='upper'?1:0)-cameraMix)*(1-Math.exp(-dt*10));
-    const zoom=scale+(w/(surface.width*.7)-scale)*cameraMix,y=(h-surface.height*scale)*(1-cameraMix)-surface.height*.012*zoom*cameraMix;
-    context.drawImage(surface,(w-surface.width*zoom)/2,y,surface.width*zoom,surface.height*zoom);
+    bodyFrame=bodyFramePlacement(w,h,current.rig.image,current.viewFrame,cameraMix);
+    context.drawImage(surface,bodyFrame.x,bodyFrame.y,bodyFrame.width,bodyFrame.height);
   }
   if(speaking){
     metrics.frames++;metrics.maxOpen=Math.max(metrics.maxOpen,1-(result.weights?.closed??1));
@@ -209,13 +225,14 @@ function paint(now){
     if(dominant&&dominant!=='closed')metrics.shapes.add(dominant.split('_')[0]);
   }
   frameCount++;
-  document.body.dataset.companionState=JSON.stringify({ready:true,revision:'body-20261030-v16',interactiveMode,voiceChannel:voiceChannel.snapshot(),surface:settings.surface??'preview',cameraMode,cameraMix,doubleTapCount,autoVoice:settings.autoVoice,followPointer:settings.followPointer,bodyShowcase:settings.bodyShowcase,bodyShowcaseGain:settings.bodyShowcaseGain,idleMotion:normalizeIdleMotion(settings.idleMotion),dragPhysics:{dragging:dragResponse.dragging,energy:dragResponse.energy,response:dragResponse.response,stats:dragStats},holdingRice,riceArtwork:result.artwork,status:state.status,expression:key,speaking,language,preferredLanguage,clipId:playback?.id??null,clipKind:playback?.kind??null,voiceSource:playback?.source??null,interaction:policy.snapshot(),gaze:[p.gazeX,p.gazeY],angles:[p.angleX,p.angleY,p.bodyAngleX,p.bodyAngleZ],audioTime:audio.currentTime,audioEnded:audio.ended,clipFrames:metrics.frames,clipMaxOpen:metrics.maxOpen,frameCount,renderMs:Math.round(renderMs*10)/10,engineSize:[engine.width,engine.height],outputSize:[w,h],renderDensity:quality.density,riceRigid:result.artwork?.rigid??false,riceShoulderError:result.artwork?.shoulderError??0,eyeSize:current.confirmed.eyeSize,eyeDistance:current.confirmed.eyeDistance,mouthScale:current.confirmed.mouthScale,weights:result.weights});
+  document.body.dataset.companionState=JSON.stringify({ready:true,revision:'halloween-events-20261031',outfit:outfits?.selected??'maid',costumePhysics:current.costumePhysics??null,interactiveMode,voiceChannel:voiceChannel.snapshot(),surface:settings.surface??'preview',cameraMode,cameraMix,doubleTapCount,autoVoice:settings.autoVoice,followPointer:settings.followPointer,bodyShowcase:settings.bodyShowcase,bodyShowcaseGain:settings.bodyShowcaseGain,idleMotion:normalizeIdleMotion(settings.idleMotion),dragPhysics:{dragging:dragResponse.dragging,energy:dragResponse.energy,response:dragResponse.response,stats:dragStats},holdingRice,riceArtwork:result.artwork,status:state.status,expression:key,speaking,language,preferredLanguage,clipId:playback?.id??null,clipKind:playback?.kind??null,voiceSource:playback?.source??null,interaction:policy.snapshot(),gaze:[p.gazeX,p.gazeY],angles:[p.angleX,p.angleY,p.bodyAngleX,p.bodyAngleZ],audioTime:audio.currentTime,audioEnded:audio.ended,clipFrames:metrics.frames,clipMaxOpen:metrics.maxOpen,frameCount,renderMs:Math.round(renderMs*10)/10,engineSize:[engine.width,engine.height],outputSize:[w,h],bodyFrame,renderDensity:quality.density,riceRigid:result.artwork?.rigid??false,riceShoulderError:result.artwork?.shoulderError??0,eyeSize:current.confirmed.eyeSize,eyeDistance:current.confirmed.eyeDistance,mouthScale:current.confirmed.mouthScale,weights:result.weights});
 }
 try{
   current=await createCurrentAvatar(engine);
-
+  outfits=createOutfitSwitcher({model:current,engine,load:async key=>{const canvas=document.createElement('canvas');canvas.style.cssText='position:fixed;left:-10000px;top:0';document.body.append(canvas);try{const factory=key==='witch'?(await import('../halloween-physics-20261031-v6/companion-avatar.js')).createWitchCompanion:createCurrentAvatar;return{model:await factory(canvas),engine:canvas};}catch(error){canvas.remove();throw error;}},onChange:({model,engine:next,outfit,announce})=>{current=model;engine=next;current.avatar.setSwayGain(1);parent.postMessage({type:'dsh-whale-outfit-ready',outfit},origin);if(announce)playOutfitLine();}});
+  await switchOutfit(settings.outfit??'maid',false);
   current.avatar.setSwayGain(1);message.textContent='';
   parent.postMessage({type:'dsh-whale-ready',revision:'body-20261030-v16'},origin);
   last=performance.now();raf=requestAnimationFrame(paint);
 }catch(error){message.textContent='模型载入失败：'+error.message;document.body.dataset.companionState=JSON.stringify({ready:false,error:error.message});parent.postMessage({type:'dsh-whale-model-error',error:message.textContent},origin);console.error(error);}
-addEventListener('pagehide',()=>{cancelAnimationFrame(raf);stopSpeech();current?.destroy();removeEventListener('message',receive);});
+addEventListener('pagehide',()=>{cancelAnimationFrame(raf);stopSpeech();outfits?.destroy();removeEventListener('message',receive);});

@@ -2,13 +2,18 @@
 
 [English](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.md) · [简体中文](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.zh.md) · [日本語](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.ja.md)
 
-[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.4)
+[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.5)
 
 给 DeepSeek Harness 使用的鲸鱼娘编程伙伴。写代码时陪着你，根据事件切换语音和表情；上下文压缩时，会捧起一碗超大的白米饭。
 
 <img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/preview.png" width="330" alt="大鲸鱼编程桌宠全身预览">
 
 观看 [B站中文版功能演示](https://www.bilibili.com/video/BV17mxe6bEpe/)或 [YouTube 英文版](https://www.youtube.com/watch?v=cyWnZlAHyJU)。
+
+### 万圣节小魔女套装
+
+在桌宠菜单中选择 **套装 → 小魔女**。魔女拥有分层帽子、摇摆发光的鬼魂提灯、配套捧饭动作，主动换装时会按当前语言说中／英／日台词。两套服装的身体大小一致。菜单会避开人物，窄窗口采用上下分区，收起后恢复保存的大小；待机动作幅度滑块保留。
+
 
 ## 可以做什么
 
@@ -23,7 +28,7 @@
 已测试 **DSH 0.2.1-rc.5**、**Node.js 22.17+**。请安装到已有的 Web 类型 profile；下面的 `web` 可替换为你的 profile 名称。
 
 ```sh
-dsh plugin --profile web add dsh-big-whale@0.6.0-rc.4
+dsh plugin --profile web add dsh-big-whale@0.6.0-rc.5
 dsh web
 ```
 

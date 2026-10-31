@@ -2,13 +2,18 @@
 
 [English](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.md) · [简体中文](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.zh.md) · [日本語](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.ja.md)
 
-[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.4)
+[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.5)
 
 DeepSeek Harness 用のクジラ娘コンパニオンです。コードを書く時間に寄り添い、イベントに合わせて声や表情を変えます。コンテキストが圧縮されると、大きなご飯を持ちます。
 
 <img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/preview.png" width="330" alt="大クジラの全身プレビュー">
 
 機能紹介動画：[YouTube 英語版](https://www.youtube.com/watch?v=cyWnZlAHyJU) · [Bilibili 中国語版](https://www.bilibili.com/video/BV17mxe6bEpe/)。
+
+### ハロウィン衣装
+
+メニューの **衣装 → 小さな魔女** で切り替えます。レイヤー分けした帽子、揺れて光るおばけランタン、専用のご飯ポーズ、ユーザー操作の着替えに合わせた中英日の短いセリフがあります。両衣装の体の大きさは共通です。メニューはキャラクターの横に開き、狭い画面では上下に分かれます。閉じると保存したサイズに戻ります。待機モーションの振幅スライダーも維持しています。
+
 
 ## 機能
 
@@ -23,7 +28,7 @@ DeepSeek Harness 用のクジラ娘コンパニオンです。コードを書く
 動作確認済み：**DSH 0.2.1-rc.5**、**Node.js 22.17+**。既存の Web 用 profile にインストールしてください。`web` は使用中の profile 名に置き換えられます。
 
 ```sh
-dsh plugin --profile web add dsh-big-whale@0.6.0-rc.4
+dsh plugin --profile web add dsh-big-whale@0.6.0-rc.5
 dsh web
 ```
 

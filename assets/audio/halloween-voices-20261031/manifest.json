@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "id": "halloween-transform",
+  "trigger": "User-initiated maid-to-witch outfit transition",
+  "languages": {
+    "zh": {
+      "voice": "Sulafat",
+      "text": "我是小魔女，不给糖就捣乱！",
+      "audio": "audio/halloween-voices-20261031/zh/Little-Witch-ZH-Sulafat.wav",
+      "performanceData": "audio/halloween-voices-20261031/zh/performance-data.json",
+      "sha256": "9ee2bdd3c7073962ff271f3b22bf60a0449cce852a822f0a50636b176b03507e",
+      "duration": 3.12
+    },
+    "en": {
+      "voice": "Sulafat",
+      "text": "I'm a little witch. Trick or treat!",
+      "audio": "audio/halloween-voices-20261031/en/Little-Witch-EN-Sulafat.wav",
+      "performanceData": "audio/halloween-voices-20261031/en/performance-data.json",
+      "sha256": "94328be27efc436dfce57f2f980d1e3b9af2fe906388253eaf2f1751e9eaea42",
+      "duration": 3.36
+    },
+    "ja": {
+      "voice": "Leda",
+      "text": "私は小さな魔女。お菓子をくれなきゃ、いたずらしちゃうよ！",
+      "audio": "audio/halloween-voices-20261031/ja/Little-Witch-JA-Leda.wav",
+      "performanceData": "audio/halloween-voices-20261031/ja/performance-data.json",
+      "sha256": "e8c61dc3bfdf7f6292318bf51be37801cab8423276ff2aefc8d29f60663687e1",
+      "duration": 5.44
+    }
+  }
+}

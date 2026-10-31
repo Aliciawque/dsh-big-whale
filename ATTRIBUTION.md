@@ -11,3 +11,5 @@
 Derivative character visuals and the bundled synthetic character speech are offered for **noncommercial** use with attribution under **CC BY-NC-SA 4.0**: https://creativecommons.org/licenses/by-nc-sa/4.0/ . Adaptations must retain the corresponding notices and ShareAlike terms. Do not present the code's MIT license as permission to commercialize these character assets.
 
 Keep these credits with redistributed copies and show a visible link to the credits alongside public downloads. No original-creator endorsement is claimed.
+
+The Halloween outfit, separated costume parts, ghost lantern, pumpkin icon and witch rice pose are AI-assisted derivative artwork under the same noncommercial attribution/share-alike terms above. Halloween speech uses the same selected synthetic voices.

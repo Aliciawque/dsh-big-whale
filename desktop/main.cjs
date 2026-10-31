@@ -14,7 +14,7 @@ if(!app.requestSingleInstanceLock()){app.exit(23);}else{
   function virtualBounds(){const values=displays(),x=Math.min(...values.map(v=>v.bounds.x)),y=Math.min(...values.map(v=>v.bounds.y));return{x,y,width:Math.max(...values.map(v=>v.bounds.x+v.bounds.width))-x,height:Math.max(...values.map(v=>v.bounds.y+v.bounds.height))-y};}
   function environment(){return{bounds:window.getBounds(),displays:displays(),primary:screen.getPrimaryDisplay().workArea};}
   async function record(reason=''){
-    const value={version:'0.6.0-rc.4',pid:process.pid,hostPid,running:!closing,reason:closeReason||reason,loadError,startedAt,window:window&&!window.isDestroyed()?{bounds:window.getBounds(),visible:window.isVisible(),minimized:window.isMinimized(),alwaysOnTop:window.isAlwaysOnTop(),ignoresMouse:ignore,region:window.__gardenRegion??null,regionError:window.__gardenRegionError??null}:null,renderer};
+    const value={version:'0.6.0-rc.5',pid:process.pid,hostPid,running:!closing,reason:closeReason||reason,loadError,startedAt,window:window&&!window.isDestroyed()?{bounds:window.getBounds(),visible:window.isVisible(),minimized:window.isMinimized(),alwaysOnTop:window.isAlwaysOnTop(),ignoresMouse:ignore,region:window.__gardenRegion??null,regionError:window.__gardenRegionError??null}:null,renderer};
     writeQueue=writeQueue.then(async()=>{try{await fs.writeFile(runtimeFile+'.tmp',JSON.stringify(value,null,2));await fs.rename(runtimeFile+'.tmp',runtimeFile);}catch{}});return writeQueue;
   }
   app.on('before-quit',event=>{if(closing)return;event.preventDefault();closing=true;clearInterval(cursorTimer);clearInterval(statusTimer);clearInterval(ownerTimer);record('closed').finally(()=>app.exit(0));});
