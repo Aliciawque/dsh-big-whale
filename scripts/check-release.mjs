@@ -14,5 +14,7 @@ for(const part of [...registered.parts,...registered.supportAssets]){
 }
 const speech=await json(path.join(assets,'audio/halloween-voices-20261031/manifest.json'));
 for(const lang of ['zh','en','ja']){const clip=speech.languages[lang],track=await json(path.join(assets,clip.performanceData)),bytes=await fs.readFile(path.join(assets,clip.audio));assert.equal(createHash('sha256').update(bytes).digest('hex'),clip.sha256);assert.equal(track.sourceSHA256,clip.sha256);assert.equal(track.audio,clip.audio);assert.equal(track.duration,clip.duration);}
-for(const name of ['README.md','README.zh.md','README.ja.md']){const text=await fs.readFile(path.join(root,name),'utf8');assert.ok(text.includes('dsh-big-whale@'+pkg.version));assert.ok(text.includes('https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/preview.png'));}
+const galleryImages=[['maid-halfbody-hd.png',2048,2560],['maid-fullbody-hd.png',2048,3640],['witch-halfbody-hd.png',2048,2560],['witch-fullbody-hd.png',2048,3640]];
+for(const [name,width,height]of galleryImages){const bytes=await fs.readFile(path.join(root,'docs/screenshots',name));assert.equal(bytes.toString('hex',0,8),'89504e470d0a1a0a');assert.equal(bytes.readUInt32BE(16),width);assert.equal(bytes.readUInt32BE(20),height);}
+for(const name of ['README.md','README.zh.md','README.ja.md']){const text=await fs.readFile(path.join(root,name),'utf8');assert.ok(text.includes('dsh-big-whale@'+pkg.version));for(const [image]of galleryImages)assert.ok(text.includes('https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/'+image),name+' is missing '+image);}
 console.log(JSON.stringify({version:pkg.version,files,syntax,costumeTextures,voiceLanguages:3,passed:true}));

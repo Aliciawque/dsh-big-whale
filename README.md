@@ -6,7 +6,17 @@
 
 A whale-girl desktop companion for DeepSeek Harness. She keeps you company while you code, reacts to events, and picks up a giant bowl of rice when your context is compacted.
 
-<img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/preview.png" width="330" alt="Big Whale coding companion, full-body preview">
+## Everyday maid outfit
+
+<table>
+<tr><th>Upper-body detail · 2048 × 2560</th><th>Full-body view · 2048 × 3640</th></tr>
+<tr>
+<td align="center"><a href="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/maid-halfbody-hd.png"><img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/maid-halfbody-hd.png" height="520" alt="Upper-body detail"></a></td>
+<td align="center"><a href="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/maid-fullbody-hd.png"><img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/maid-fullbody-hd.png" height="520" alt="Full-body view"></a></td>
+</tr>
+</table>
+
+Native renders from the released **0.6.0-rc.5** model. Click either image to open the full-resolution PNG.
 
 Watch the [English feature demo on YouTube](https://www.youtube.com/watch?v=cyWnZlAHyJU) or the [Chinese demo on Bilibili](https://www.bilibili.com/video/BV17mxe6bEpe/).
 

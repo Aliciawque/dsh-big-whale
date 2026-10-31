@@ -6,7 +6,17 @@
 
 给 DeepSeek Harness 使用的鲸鱼娘编程伙伴。写代码时陪着你，根据事件切换语音和表情；上下文压缩时，会捧起一碗超大的白米饭。
 
-<img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/preview.png" width="330" alt="大鲸鱼编程桌宠全身预览">
+## 日常女仆装
+
+<table>
+<tr><th>女仆装半身细节 · 2048 × 2560</th><th>女仆装全身展示 · 2048 × 3640</th></tr>
+<tr>
+<td align="center"><a href="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/maid-halfbody-hd.png"><img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/maid-halfbody-hd.png" height="520" alt="女仆装半身细节"></a></td>
+<td align="center"><a href="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/maid-fullbody-hd.png"><img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/maid-fullbody-hd.png" height="520" alt="女仆装全身展示"></a></td>
+</tr>
+</table>
+
+截图由已发布的 **0.6.0-rc.5** 模型原生渲染。点击任意图片可查看完整分辨率 PNG。
 
 观看 [B站中文版功能演示](https://www.bilibili.com/video/BV17mxe6bEpe/)或 [YouTube 英文版](https://www.youtube.com/watch?v=cyWnZlAHyJU)。
 

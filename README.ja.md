@@ -6,7 +6,17 @@
 
 DeepSeek Harness 用のクジラ娘コンパニオンです。コードを書く時間に寄り添い、イベントに合わせて声や表情を変えます。コンテキストが圧縮されると、大きなご飯を持ちます。
 
-<img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/preview.png" width="330" alt="大クジラの全身プレビュー">
+## いつものメイド服
+
+<table>
+<tr><th>メイド服・上半身 · 2048 × 2560</th><th>メイド服・全身 · 2048 × 3640</th></tr>
+<tr>
+<td align="center"><a href="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/maid-halfbody-hd.png"><img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/maid-halfbody-hd.png" height="520" alt="メイド服・上半身"></a></td>
+<td align="center"><a href="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/maid-fullbody-hd.png"><img src="https://raw.githubusercontent.com/Aliciawque/dsh-big-whale/main/docs/screenshots/maid-fullbody-hd.png" height="520" alt="メイド服・全身"></a></td>
+</tr>
+</table>
+
+公開済み **0.6.0-rc.5** モデルから直接レンダリングした画像です。クリックすると原寸PNGを表示できます。
 
 機能紹介動画：[YouTube 英語版](https://www.youtube.com/watch?v=cyWnZlAHyJU) · [Bilibili 中国語版](https://www.bilibili.com/video/BV17mxe6bEpe/)。
 
