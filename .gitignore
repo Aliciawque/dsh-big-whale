@@ -9,3 +9,4 @@ work/
 review/
 .DS_Store
 Thumbs.db
+.claude-plugin/types/

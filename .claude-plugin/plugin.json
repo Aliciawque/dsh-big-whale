@@ -1,0 +1,9 @@
+{
+  "name": "big-whale",
+  "version": "0.6.0-rc.6",
+  "description": "Big Whale (大鲸鱼): a trilingual desktop companion that reacts to your Claude Code session and holds a giant bowl of rice while the context is compacted.",
+  "author": { "name": "Aliciawque" },
+  "homepage": "https://github.com/Aliciawque/dsh-big-whale",
+  "repository": "https://github.com/Aliciawque/dsh-big-whale",
+  "license": "SEE LICENSE IN LICENSE"
+}

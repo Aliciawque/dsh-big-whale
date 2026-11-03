@@ -73,6 +73,22 @@ node bin/desktop.mjs setup
 
 The desktop pet stays visible when the DSH browser is minimized; the DSH host must remain running. Close her from the whale menu and reopen her from the whale launcher in DSH. Without an available desktop runtime, she appears inside the DSH page.
 
+## Use with Claude Code
+
+Big Whale also follows your Claude Code sessions: she thinks and works with you, waits with you at a permission prompt, cheers when a turn ends and holds the giant bowl of rice while the conversation is compacted.
+
+At a Claude Code prompt:
+
+```text
+/plugin install big-whale --marketplace Aliciawque/dsh-big-whale
+```
+
+Answer `y` to add the marketplace, then choose a scope. From a shell: `claude plugin install big-whale --marketplace Aliciawque/dsh-big-whale`.
+
+- Needs **Node.js 22.17+** on `PATH`. The plugin starts one local companion on `127.0.0.1`, shared by every session; it leaves about two minutes after the last session stops talking to it.
+- On Windows she opens as the desktop window (if the Electron runtime is missing, run `node bin/desktop.mjs setup` in the installed plugin folder that `claude plugin list` shows). On macOS and Linux, run `/big-whale` for the companion page and open it in a browser.
+- Only the main conversation is followed, not subagents. Tested with Claude Code 2.1.317 on Linux and Windows, including the Windows desktop window, permission prompts and compaction.
+
 ## Controls
 
 Drag to place her; double-click to switch full body / upper body. Open the floating whale to choose language, play an introduction, change idle motion or expression, or show the rice pose.

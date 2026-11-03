@@ -1,0 +1,6 @@
+{
+  "name": "big-whale",
+  "owner": { "name": "Aliciawque" },
+  "description": "Big Whale (大鲸鱼 / 大クジラ), a fan-made desktop companion for Claude Code and DeepSeek Harness.",
+  "plugins": [{ "name": "big-whale", "source": "./", "description": "Big Whale desktop companion for Claude Code" }]
+}

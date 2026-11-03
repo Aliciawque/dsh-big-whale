@@ -73,6 +73,22 @@ node bin/desktop.mjs setup
 
 DSH 浏览器最小化后，她仍能留在桌面上；DSH 宿主进程需要保持运行。通过小鲸鱼菜单关闭她，再从 DSH 的小鲸鱼入口重新开启。没有可用桌面运行时时，会在 DSH 页面内显示。
 
+## 在 Claude Code 中使用
+
+大鲸鱼也能陪你用 Claude Code：一起思考、执行工具，遇到权限确认时陪你等待，一轮完成时为你开心；对话压缩上下文时，她会捧起那碗超大的白米饭。
+
+在 Claude Code 的输入框中执行：
+
+```text
+/plugin install big-whale --marketplace Aliciawque/dsh-big-whale
+```
+
+按 `y` 添加插件市场，再选择安装范围。也可以在终端执行：`claude plugin install big-whale --marketplace Aliciawque/dsh-big-whale`。
+
+- 需要 `PATH` 中有 **Node.js 22.17+**。插件会在 `127.0.0.1` 启动一个本地伙伴服务，所有会话共用；最后一个会话停止通信约两分钟后自动退出。
+- Windows 上会打开桌面窗口（缺少 Electron 运行时，在 `claude plugin list` 显示的插件目录中执行 `node bin/desktop.mjs setup`）。macOS 与 Linux 上执行 `/big-whale` 获取伙伴页面地址，用浏览器打开。
+- 只跟随主对话，不跟随子代理。已在 Linux 和 Windows 上用 Claude Code 2.1.317 测试，包括 Windows 桌面窗口、权限确认和对话压缩。
+
 ## 操作
 
 拖动调整位置，双击切换全身／半身。点击游动的小鲸鱼，可选语言、播放自我介绍、切换待机动作和表情，也可以触发捧饭。
