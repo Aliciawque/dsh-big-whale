@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.6.0-rc.6 — 2026-11-03
 
 - Read the reported plugin and desktop runtime version from package.json; the release check rejects hard-coded versions.
 - Accept `localhost` and `[::1]` DSH origins for the Windows desktop runtime, not only `127.0.0.1`.

@@ -1,4 +1,22 @@
-# Verification — 0.6.0-rc.5
+# Verification — 0.6.0-rc.6
+
+## RC6 candidate checks (2026-11-03)
+
+- Source base: merged PR #5, commit `e60309f858db1a56a3e24fb5d628298c4b180096`. Release metadata advances the package to RC6; character assets and the optional Electron dependency are unchanged.
+- All 15 Node regression tests pass. Release checks pass across 284 runtime files, 47 JavaScript syntax checks, 60 costume references, and three hashed voice tracks. The DSH 0.2.1-rc.5 format-1 validator accepts the RC6 market index.
+- Exact candidate archive: 71,521,625 bytes, 299 files, SHA-256 `cb35da3e6ad075d1d1710679e29a342b670b6dee0688cb9ff29ca203fcf7d743`. All 299 files in the isolated Web-backed DSH profile match the archive byte for byte.
+- On Windows, explicit Electron setup completed in that isolated profile. The real DSH 0.2.1-rc.5 host returned RC6 state; the desktop window reported RC6, renderer ready, visible and always on top, with no load or region error.
+- Browser network events captured three `/whale-companion/state` requests while the desktop ran; both measured intervals were 5 seconds.
+- After a controlled exit of the isolated Electron child, the host start route launched a new ready desktop process. A separate Electron instance then held the same single-instance lock until the host retry budget was exhausted. Once that blocker exited, an explicit start recovered to a new ready, visible desktop process.
+- The isolated DSH Web page loaded without an account or model key. The user's regular DSH profile was not replaced.
+
+The RC6 check is Windows-specific. It does not establish macOS/Linux behavior, a full LLM event flow, or a real localhost/IPv6 DSH host session.
+
+## RC6 public registry verification
+
+- npm published `dsh-big-whale@0.6.0-rc.6` at 2026-11-03T03:06:47.776Z. The `next` tag points to RC6; `latest` remains RC2.
+- An anonymous download of the public tarball is 71,521,625 bytes with SHA-256 `cb35da3e6ad075d1d1710679e29a342b670b6dee0688cb9ff29ca203fcf7d743`, byte-identical to the tested archive. Registry SHA-1 `bb50f7612a15b9e5e3eef54fc21b4dfce6cbb009` and SHA-512 integrity also match the reviewed artifact.
+- A fresh isolated DSH 0.2.1-rc.5 Web-backed profile installed the exact public registry version. All 299 installed files matched the anonymous public tarball. A real host boot returned `dsh-big-whale` and version `0.6.0-rc.6`; its desktop runtime was intentionally not set up in that second profile.
 
 ## RC5 candidate checks (2026-10-31)
 
