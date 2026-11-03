@@ -1,5 +1,5 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {spawn} from 'node:child_process';import {mkdtempSync,readFileSync,existsSync,rmSync,statSync} from 'node:fs';import {tmpdir} from 'node:os';import path from 'node:path';
+import {execFileSync,spawn} from 'node:child_process';import {mkdtempSync,readFileSync,existsSync,rmSync,statSync} from 'node:fs';import {tmpdir} from 'node:os';import path from 'node:path';
 import {createCompanionState} from '../lib/state.mjs';
 import * as map from '../lib/claude-code-events.mjs';
 
@@ -37,14 +37,16 @@ const exited=child=>new Promise(resolve=>child.exitCode!==null?resolve(child.exi
 
 test('the standalone companion takes token-signed events, refuses others, and stays single',async()=>{
  const home=mkdtempSync(path.join(tmpdir(),'big-whale-'));
- const {child,ready}=startCompanion(home);
+ const {child,ready}=startCompanion(home,{BIG_WHALE_IDLE_EXIT_MS:'1000'});
  try{
   const {origin,page}=await ready;
   const runtime=JSON.parse(readFileSync(path.join(home,'plugin-data/big-whale/claude-code.json'),'utf8'));
   assert.equal(runtime.origin,origin);
   if(process.platform!=='win32')assert.equal(statSync(path.join(home,'plugin-data/big-whale/claude-code.json')).mode&0o077,0,'the runtime file holds the token: owner only');
+  else assert.doesNotMatch(execFileSync('icacls.exe',[path.join(home,'plugin-data/big-whale/claude-code.json')],{encoding:'utf8'}),/\(I\)/,'the Windows runtime file must not inherit broader ACLs');
   const post=(body,headers={})=>fetch(origin+'/whale-companion/event',{method:'POST',headers:{'content-type':'application/json','x-whale-token':runtime.token,...headers},body:JSON.stringify(body)});
   assert.equal((await post({session:'s',events:map.compactionStarted('s:1')},{'x-whale-token':'wrong'})).status,403);
+  assert.equal((await post({session:'s',events:map.compactionStarted('s:1')},{'x-whale-token':'é'.repeat(runtime.token.length)})).status,403);
   assert.equal((await post({session:'s',events:[]},{origin:'https://evil.example'})).status,403);
   assert.equal((await post({session:'s',events:[{type:'x'.repeat(41)}]})).status,400);
   assert.equal((await post({session:'s',events:[...map.turnStarted(),...map.compactionStarted('s:1')]})).status,204);
@@ -53,7 +55,8 @@ test('the standalone companion takes token-signed events, refuses others, and st
   assert.equal((await fetch(page)).status,200);
   const second=startCompanion(home);second.ready.catch(()=>{});
   assert.equal(await exited(second.child),3);
- }finally{child.kill('SIGTERM');await exited(child);}
+  assert.equal(await Promise.race([exited(child),new Promise(resolve=>setTimeout(()=>resolve('timeout'),5000))]),0);
+ }finally{if(child.exitCode===null)child.kill('SIGTERM');await exited(child);}
  assert.equal(existsSync(path.join(home,'plugin-data/big-whale/claude-code.json')),false);
  rmSync(home,{recursive:true,force:true});
 });

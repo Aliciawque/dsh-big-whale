@@ -4,6 +4,7 @@
 // and the Windows desktop window read /whale-companion/state exactly as they do under DSH.
 import http from 'node:http';
 import { randomBytes } from 'node:crypto';
+import { execFileSync } from 'node:child_process';
 import { closeSync, mkdirSync, openSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -19,11 +20,24 @@ const IDLE_EXIT_MS = Number(process.env.BIG_WHALE_IDLE_EXIT_MS) || 120000;
 const log = message => process.stderr.write(`[big-whale] ${message}\n`);
 const alive = pid => { try { process.kill(pid, 0); return true; } catch (error) { return error.code === 'EPERM'; } };
 
+// Node's 0o600 does not restrict inherited Windows ACLs. Protect the empty file before writing a token.
+function restrictFile(file) {
+  if (process.platform !== 'win32') return;
+  const sid = execFileSync('whoami.exe', ['/user', '/fo', 'csv', '/nh'], { encoding: 'utf8', windowsHide: true }).match(/S-1-\d+(?:-\d+)*/)?.[0];
+  if (!sid) throw Error('Could not determine the current Windows user SID');
+  execFileSync('icacls.exe', [file, '/inheritance:r', '/grant:r', `*${sid}:(F)`], { windowsHide: true, stdio: 'ignore' });
+}
+
 // One companion per machine: a live lock holder wins, a stale lock is taken over.
 mkdirSync(dataPath, { recursive: true });
 function lock() {
   for (let attempt = 0; attempt < 2; attempt++) {
-    try { const fd = openSync(lockFile, 'wx', 0o600); writeFileSync(fd, String(process.pid)); closeSync(fd); return true; }
+    try {
+      const fd = openSync(lockFile, 'wx', 0o600);
+      try { restrictFile(lockFile); writeFileSync(fd, String(process.pid)); }
+      catch (error) { closeSync(fd); rmSync(lockFile, { force: true }); throw error; }
+      closeSync(fd); return true;
+    }
     catch (error) {
       if (error.code !== 'EEXIST') throw error;
       const holder = Number(readFileSync(lockFile, 'utf8')) || 0;
@@ -56,7 +70,17 @@ await new Promise((resolve, reject) => { server.once('error', reject); server.li
 origin = `http://127.0.0.1:${server.address().port}`;
 
 const runtime = { pid: process.pid, origin, token, version, page: `${origin}/whale-companion/assets/generated/desktop-companion-20261030/shell.html`, startedAt: new Date().toISOString() };
-writeFileSync(runtimeFile + '.tmp', JSON.stringify(runtime, null, 2), { mode: 0o600 }); renameSync(runtimeFile + '.tmp', runtimeFile);
+writeFileSync(runtimeFile + '.tmp', '', { mode: 0o600 });
+try {
+  restrictFile(runtimeFile + '.tmp');
+  writeFileSync(runtimeFile + '.tmp', JSON.stringify(runtime, null, 2));
+  renameSync(runtimeFile + '.tmp', runtimeFile);
+} catch (error) {
+  rmSync(runtimeFile + '.tmp', { force: true });
+  rmSync(lockFile, { force: true });
+  server.close();
+  throw error;
+}
 process.stdout.write(JSON.stringify({ ready: true, origin, page: runtime.page, pid: process.pid }) + '\n');
 log(`ready on ${origin}`);
 

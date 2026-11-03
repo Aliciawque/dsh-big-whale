@@ -87,7 +87,7 @@ DSH 浏览器最小化后，她仍能留在桌面上；DSH 宿主进程需要保
 
 - 需要 `PATH` 中有 **Node.js 22.17+**。插件会在 `127.0.0.1` 启动一个本地伙伴服务，所有会话共用；最后一个会话停止通信约两分钟后自动退出。
 - Windows 上会打开桌面窗口（缺少 Electron 运行时，在 `claude plugin list` 显示的插件目录中执行 `node bin/desktop.mjs setup`）。macOS 与 Linux 上执行 `/big-whale` 获取伙伴页面地址，用浏览器打开。
-- 只跟随主对话，不跟随子代理。已在 Linux 上用 Claude Code 2.1.317 测试；Claude Code 下的 Windows 桌面窗口尚未验证。
+- 只跟随主对话，不跟随子代理。已在 Linux 和 Windows 上用 Claude Code 2.1.317 测试，包括 Windows 桌面窗口、权限确认和对话压缩。
 
 ## 操作
 

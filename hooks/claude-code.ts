@@ -23,6 +23,15 @@ let starting: Promise<void> | undefined
 let lastError = ''
 const asked = new Set<string>()
 
+// Local companion traffic must not be sent to a configured HTTP proxy.
+async function bypassLoopbackProxy($: $) {
+  const existing = (await $.env.get('NO_PROXY'))?.trim() ?? ''
+  if (existing.split(',').some(item => item.trim() === '127.0.0.1')) return
+  const value = [existing, '127.0.0.1', 'localhost'].filter(Boolean).join(',')
+  const result = await $.env.set('NO_PROXY', value)
+  if (result.deny) lastError = 'Claude Code did not allow the local proxy bypass.'
+}
+
 async function runtimeFile($: $): Promise<string> {
   const dsh = (await $.env.get('DSH_HOME'))?.trim()
   // As Node's os.homedir() picks it: USERPROFILE on Windows, HOME elsewhere.
@@ -62,13 +71,14 @@ async function send($: $, events: CompanionEvent[]) {
 
 // Joins a running companion, or starts one that lives as long as this session's module.
 async function ensure($: $): Promise<void> {
+  await bypassLoopbackProxy($)
   if (runtime && await post($, [])) return
   const found = await readRuntime($)
   if (found && await post($, [], found)) { runtime = found; return }
   runtime = undefined
   starting ??= (async () => {
     try {
-      const child = $.process.spawn({ argv: ['node', `${$.plugin.root}/bin/claude-code-companion.mjs`] })
+      const child = $.process.spawn({ argv: ['node', `${$.plugin.root}/bin/launch-claude-code-companion.mjs`] })
       void (async () => {
         try {
           for await (const { text } of child) $.ui.log(text.trim(), { to: 'debug' })
@@ -94,12 +104,12 @@ export const register: Register = on => {
     await $.command.register({ name: 'big-whale', description: 'Show Big Whale, your desktop companion: status and the companion page.' })
     // Awaited (briefly) so the first turn already has a companion to talk to.
     await Promise.race([ensure($).catch(() => {}), bound($, START_WAIT_MS)])
-    $.clock.every(KEEPALIVE_MS, () => { void ensure($) })
+    $.clock.every(KEEPALIVE_MS, () => { void ensure($).catch(() => {}) })
     return started
   })
 
   on('command.run', { command: 'big-whale' }, async $ => {
-    await ensure($)
+    await ensure($).catch(() => { lastError = 'Could not start the local companion.' })
     if (!runtime) return { text: `Big Whale is not running. ${lastError || 'Run claude --debug for the companion log.'}` }
     let desktop = ''
     try {
@@ -111,6 +121,7 @@ export const register: Register = on => {
   })
 
   on('turn.start', async ($, e, next) => {
+    if (e.agentId === undefined) session = await $.session.id()
     if (e.agentId === undefined) await send($, turnStarted())
     return next(e)
   })
@@ -152,4 +163,5 @@ export const register: Register = on => {
     if (e.agentId === undefined) await send($, turnFinished(e.reason))
     return next(e)
   })
+
 }

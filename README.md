@@ -87,7 +87,7 @@ Answer `y` to add the marketplace, then choose a scope. From a shell: `claude pl
 
 - Needs **Node.js 22.17+** on `PATH`. The plugin starts one local companion on `127.0.0.1`, shared by every session; it leaves about two minutes after the last session stops talking to it.
 - On Windows she opens as the desktop window (if the Electron runtime is missing, run `node bin/desktop.mjs setup` in the installed plugin folder that `claude plugin list` shows). On macOS and Linux, run `/big-whale` for the companion page and open it in a browser.
-- Only the main conversation is followed, not subagents. Tested with Claude Code 2.1.317 on Linux; the Windows desktop window under Claude Code is not verified yet.
+- Only the main conversation is followed, not subagents. Tested with Claude Code 2.1.317 on Linux and Windows, including the Windows desktop window, permission prompts and compaction.
 
 ## Controls
 

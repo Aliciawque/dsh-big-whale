@@ -6,6 +6,7 @@
 - Share the `/whale-companion` routes between the DSH host and the Claude Code companion (`lib/routes.mjs`).
 - Add a `/big-whale` command showing the companion's status and page.
 - Add tests for the Claude Code event mapping, the standalone companion and the hooks module (`claude plugin test .`).
+- Keep the standalone companion alive after Claude Code exits so its idle timer removes the runtime token and lock; restrict those files to the current Windows user and bypass HTTP proxies for local companion requests.
 
 ## 0.6.0-rc.6 — 2026-11-03
 

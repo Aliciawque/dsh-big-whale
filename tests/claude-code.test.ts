@@ -10,6 +10,7 @@ function companion(on: Parameters<Parameters<typeof test>[1]>[1]) {
   const sent: Array<{ type: string; data?: Record<string, unknown> }> = []
   const headers: string[] = []
   on('env.get', () => ({ value: '/home/test' }))
+  on('env.set', () => ({ value: {} }))
   on('fs.read', () => ({ value: JSON.stringify(RUNTIME) }))
   on('session.id', () => ({ value: 'session-1' }))
   on('command.register', () => ({ value: { command: 'big-whale' } }))
@@ -69,6 +70,7 @@ test('a refused tool call is not reported as a failure', async ($, on) => {
 
 test('with no companion running, tools and compactions still run normally', async ($, on) => {
   on('env.get', () => ({ value: '/home/test' }))
+  on('env.set', () => ({ value: {} }))
   on('fs.read', () => { throw new Error('ENOENT') })
   on('session.id', () => ({ value: 'session-2' }))
   on('command.register', () => ({ value: { command: 'big-whale' } }))
