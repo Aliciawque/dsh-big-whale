@@ -3,8 +3,9 @@ const fs=require('node:fs/promises'),path=require('node:path');
 const {applyWindowRegion}=require('./window-region.cjs');
 const argument=(name,fallback)=>process.argv.find(value=>value.startsWith('--'+name+'='))?.slice(name.length+3)??fallback;
 const origin=argument('dsh-origin','http://127.0.0.1:3080'),hostPid=Number(argument('host-pid','0'));
-if(!/^http:\/\/127\.0\.0\.1:\d+$/.test(origin)||!Number.isSafeInteger(hostPid)||hostPid<=0)process.exit(2);
+if(!/^http:\/\/(?:127\.0\.0\.1|localhost|\[::1\]):\d+$/.test(origin)||!Number.isSafeInteger(hostPid)||hostPid<=0)process.exit(2);
 const install=path.resolve(__dirname,'..'),dataPath=argument('data-path',path.join(require('node:os').homedir(),'.dsh/plugin-data/big-whale')),runtimeFile=path.join(dataPath,'desktop-runtime.json');
+const {version}=require('./package.json');
 const shellPath='/whale-companion/assets/generated/desktop-companion-20261030/shell.html';
 app.setName('Big Whale Companion');app.setPath('userData',path.join(dataPath,'desktop-profile'));
 if(!app.requestSingleInstanceLock()){app.exit(23);}else{
@@ -14,7 +15,7 @@ if(!app.requestSingleInstanceLock()){app.exit(23);}else{
   function virtualBounds(){const values=displays(),x=Math.min(...values.map(v=>v.bounds.x)),y=Math.min(...values.map(v=>v.bounds.y));return{x,y,width:Math.max(...values.map(v=>v.bounds.x+v.bounds.width))-x,height:Math.max(...values.map(v=>v.bounds.y+v.bounds.height))-y};}
   function environment(){return{bounds:window.getBounds(),displays:displays(),primary:screen.getPrimaryDisplay().workArea};}
   async function record(reason=''){
-    const value={version:'0.6.0-rc.5',pid:process.pid,hostPid,running:!closing,reason:closeReason||reason,loadError,startedAt,window:window&&!window.isDestroyed()?{bounds:window.getBounds(),visible:window.isVisible(),minimized:window.isMinimized(),alwaysOnTop:window.isAlwaysOnTop(),ignoresMouse:ignore,region:window.__gardenRegion??null,regionError:window.__gardenRegionError??null}:null,renderer};
+    const value={version,pid:process.pid,hostPid,running:!closing,reason:closeReason||reason,loadError,startedAt,window:window&&!window.isDestroyed()?{bounds:window.getBounds(),visible:window.isVisible(),minimized:window.isMinimized(),alwaysOnTop:window.isAlwaysOnTop(),ignoresMouse:ignore,region:window.__gardenRegion??null,regionError:window.__gardenRegionError??null}:null,renderer};
     writeQueue=writeQueue.then(async()=>{try{await fs.writeFile(runtimeFile+'.tmp',JSON.stringify(value,null,2));await fs.rename(runtimeFile+'.tmp',runtimeFile);}catch{}});return writeQueue;
   }
   app.on('before-quit',event=>{if(closing)return;event.preventDefault();closing=true;clearInterval(cursorTimer);clearInterval(statusTimer);clearInterval(ownerTimer);record('closed').finally(()=>app.exit(0));});
