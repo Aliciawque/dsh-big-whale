@@ -73,6 +73,22 @@ node bin/desktop.mjs setup
 
 DSH のブラウザを最小化しても、デスクトップ表示は残ります。DSH のホストプロセスは起動したままにしてください。クジラメニューから閉じ、DSH のクジラアイコンから再び開けます。ランタイムが利用できない場合はページ内に表示されます。
 
+## Claude Code で使う
+
+大クジラは Claude Code のセッションにも寄り添います。一緒に考えて作業し、権限の確認では一緒に待ち、ターンが終わると喜び、会話が圧縮されるときは大きなご飯を持ちます。
+
+Claude Code の入力欄で実行します。
+
+```text
+/plugin install big-whale --marketplace Aliciawque/dsh-big-whale
+```
+
+`y` でマーケットを追加し、インストール範囲を選びます。シェルからは `claude plugin install big-whale --marketplace Aliciawque/dsh-big-whale` です。
+
+- `PATH` に **Node.js 22.17+** が必要です。プラグインは `127.0.0.1` にローカルのパートナーを 1 つ起動し、すべてのセッションで共有します。最後のセッションからの通信が止まって約 2 分後に終了します。
+- Windows ではデスクトップウィンドウで表示されます（Electron ランタイムがない場合は、`claude plugin list` に表示されるプラグインフォルダーで `node bin/desktop.mjs setup` を実行）。macOS と Linux では `/big-whale` でパートナーページの URL を表示し、ブラウザーで開きます。
+- 追うのはメインの会話のみで、サブエージェントは対象外です。Linux 上の Claude Code 2.1.317 で確認済み。Claude Code での Windows デスクトップウィンドウは未検証です。
+
 ## 操作
 
 ドラッグで移動し、ダブルクリックで全身／上半身を切り替えます。小さなクジラをクリックすると、言語、自己紹介、待機モーション、表情、ご飯のポーズを選べます。

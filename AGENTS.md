@@ -5,3 +5,5 @@ Keep README.md, README.zh.md and README.ja.md synchronized when changing install
 Use English identifiers, code comments and commit messages. Preserve approved character proportions and the separate MIT / CC BY-NC-SA notices. Do not include credentials, user profiles, conversations, working files or original reference material in this public repository.
 
 Runtime JavaScript is prebuilt. Before a release, validate market-index.json with the DSH format-1 validator and test the exact npm artifact in a separate Web-backed DSH profile. Do not claim cross-platform validation from a Windows-only check.
+
+The Claude Code plugin lives at the repository root (`.claude-plugin/`, `hooks/claude-code.ts`, `bin/claude-code-companion.mjs`). Keep `.claude-plugin/plugin.json`'s version equal to `package.json`'s, run `claude plugin validate .` and `claude plugin test .` after changing it, and keep the hooks module observe-only: every hook passes the engine's result through unchanged.

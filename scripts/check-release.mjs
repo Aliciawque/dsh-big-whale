@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';import path from 'node:path';import assert fro
 const root=path.resolve(fileURLToPath(new URL('..',import.meta.url))),assets=path.join(root,'assets');
 const json=async file=>JSON.parse(await fs.readFile(file,'utf8'));
 const pkg=await json(path.join(root,'package.json')),index=await json(path.join(root,'market-index.json'));
-assert.equal(index.format,1);assert.equal(index.plugins[0].versions[0].version,pkg.version);assert.equal((await json(path.join(root,'desktop/package.json'))).version,pkg.version);
+assert.equal(index.format,1);assert.equal((await json(path.join(root,'.claude-plugin/plugin.json'))).version,pkg.version,'Claude Code plugin version');assert.equal(index.plugins[0].versions[0].version,pkg.version);assert.equal((await json(path.join(root,'desktop/package.json'))).version,pkg.version);
 let files=0,syntax=0;async function scan(directory){for(const item of await fs.readdir(directory,{withFileTypes:true})){const file=path.join(directory,item.name);if(item.isDirectory())await scan(file);else{files++;assert.ok(!/(?:\.local\.|\.npmrc$|\.env$)/.test(item.name),'Private file: '+file);if(/\.(?:js|mjs|cjs)$/.test(file)){const result=spawnSync(process.execPath,['--check',file],{encoding:'utf8'});assert.equal(result.status,0,result.stderr);syntax++;}else if(file.endsWith('.json'))await json(file);}}}
 for(const dir of ['assets','lib','desktop','bin'])await scan(path.join(root,dir));
 const registered=await json(path.join(assets,'generated/halloween-physics-20261031-v6/registration.json'));

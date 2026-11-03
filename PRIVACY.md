@@ -7,3 +7,7 @@ Desktop position, size, view, language, expression and idle preferences are brow
 The companion subscribes to DSH status events (turn/tool/approval/compaction). It does not create a workspace or copy source files, chat history, model credentials or DSH logs into the published package. Local status records contain current animation/voice metrics and bounded event labels. Closing DSH stops its owned desktop companion.
 
 Installing the optional Electron runtime may download the official runtime. Registry installation and DSH's own model calls follow their respective products' network settings. No external analytics is added by this plugin.
+
+## Claude Code
+
+Under Claude Code the plugin starts `bin/claude-code-companion.mjs`, a local server bound to `127.0.0.1`. It records `claude-code.json` (origin, PID and a random per-run token, owner-readable only) and a lock file under the same `plugin-data/big-whale` folder, and removes both when it exits. Claude Code sessions send it only event kinds, tool names, tool-call ids and the session id, signed with that token; no prompt, file content, command text or tool output is sent. The server accepts no event from a browser origin and keeps nothing on disk beyond those two files and the desktop profile.

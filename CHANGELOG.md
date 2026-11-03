@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased
+
+- Add a Claude Code plugin (`/plugin install big-whale --marketplace Aliciawque/dsh-big-whale`): turns, tool calls, permission asks and compactions of the main conversation drive the same expressions, voices and rice pose, through a shared local companion (`bin/claude-code-companion.mjs`).
+- Share the `/whale-companion` routes between the DSH host and the Claude Code companion (`lib/routes.mjs`).
+- Add a `/big-whale` command showing the companion's status and page.
+- Add tests for the Claude Code event mapping, the standalone companion and the hooks module (`claude plugin test .`).
+
 ## 0.6.0-rc.6 — 2026-11-03
 
 - Read the reported plugin and desktop runtime version from package.json; the release check rejects hard-coded versions.
