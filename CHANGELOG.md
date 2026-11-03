@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Read the reported plugin and desktop runtime version from package.json; the release check rejects hard-coded versions.
+- Accept `localhost` and `[::1]` DSH origins for the Windows desktop runtime, not only `127.0.0.1`.
+- Give each explicit desktop start a fresh single-instance retry budget, and reset it after a long-running session.
+- Poll companion state every 5 s instead of every second while the desktop window is running.
+- Add unit tests for the session state machine and the shared voice lease.
+- Update the install command in the promotion drafts.
+
 ## 0.6.0-rc.5 — 2026-10-31
 
 - Add the layered Halloween witch outfit, delayed hat/lantern physics, pumpkin menu button, witch rice pose and trilingual outfit greeting.
