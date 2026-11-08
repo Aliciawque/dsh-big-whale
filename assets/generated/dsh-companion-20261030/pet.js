@@ -9,6 +9,7 @@ import {normalizeVoiceLanguage,selectVoiceClip,voiceTrackKey} from './voice-lang
 import {textFor} from '../desktop-companion-20261030/i18n.js';
 import {createVoiceChannel} from './voice-channel.js';
 import {createOutfitSwitcher,normalizeOutfit} from './outfits.js';
+import {applyEventMotion,createEventMotion,drawFailureSweat} from './event-motions.js';
 let engine=document.getElementById('engine');const canvas=document.getElementById('pet'),context=canvas.getContext('2d'),message=document.getElementById('status');
 const root=new URL('../../',import.meta.url),origin=location.origin,defaults=Object.fromEntries(PARAMS.map(p=>[p.id,p.def]));
 const clamp=(v,min=0,max=1)=>Math.max(min,Math.min(max,v)),smooth=v=>{v=clamp(v);return v*v*(3-2*v);};
@@ -23,6 +24,7 @@ const motionBlend={},dragPhysics=createDragPhysics(),dragStats={starts:0,release
 let playback=null,metrics={frames:0,maxOpen:0,shapes:new Set()},cameraMode='full',cameraMix=0,tapTimer=null,lastTap=null,doubleTapCount=0;
 const faceView=new URLSearchParams(location.search).get('camera')==='face';
 const tracks=new Map(),pose={...defaults};audio.preload='auto';
+const eventMotion=createEventMotion();
 const voiceChannel=createVoiceChannel({role:()=>settings.surface==='desktop'?'desktop':'preview',onLost:()=>stopSpeech()});
 const json=async url=>{const r=await fetch(url);if(!r.ok)throw Error('缺少模型或语音资源');return r.json();};
 function announceVoice(event,error=''){
@@ -38,7 +40,7 @@ async function activate(track,expectedHash,next,info,token){
   if((info.source==='event'&&!policy.isCurrent(info))||(info.source==='drag'&&!pointerDown?.dragged)){await voiceChannel.release();return;}
   data=track;language=next;playback=info;metrics={frames:0,maxOpen:0,shapes:new Set()};
   audio.volume=clamp(info.playbackGain??1,0,1);
-  if(info.rice)riceUntil=Math.max(riceUntil,time+8);
+  if(info.rice&&info.source!=='event')riceUntil=Math.max(riceUntil,time+8);
   audio.src=new URL(track.audio,root).href;await audio.play();
   if(token!==speechToken)return;
   message.textContent='';announceVoice('play');
@@ -105,7 +107,11 @@ function schedule(){
 function receive(event){
   if(event.origin!==origin||event.source!==parent)return;
   const value=event.data??{};
-  if(value.type==='dsh-whale-state'&&autoExpression[value.state?.status]){state=value.state;configure({});policy.ingest(state);schedule();}
+  if(value.type==='dsh-whale-state'&&autoExpression[value.state?.status]){
+    state=value.state;
+    eventMotion.ingest(state);
+    configure({});policy.ingest(state);schedule();
+  }
   if(value.type==='dsh-whale-settings')configure(value.settings??{},{outfitChanged:value.outfitChanged});
   if(value.type==='dsh-whale-expression'&&(value.expression==='auto'||expressions[value.expression]))override=value.expression;
   if(value.type==='dsh-whale-gaze')pointer={x:clamp(value.x,-1,1),y:clamp(value.y,-1,1)};
@@ -200,13 +206,16 @@ function paint(now){
   const p={...pose,eyeLOpen:pose.eyeLOpen*blink,eyeROpen:pose.eyeROpen*blink,voiceActive:speaking?1:0};
   for(const [name,value] of Object.entries(dragResponse.pose))p[name]=(p[name]??0)+value;
   p.angleX=clamp(p.angleX,-30,30);p.angleY=clamp(p.angleY,-30,30);p.angleZ=clamp(p.angleZ,-12,12);p.bodyAngleX=clamp(p.bodyAngleX,-10,10);p.bodyAngleZ=clamp(p.bodyAngleZ,-10,10);
-  const holdingRice=Boolean(interactiveMode&&(state.compactionActive||time<riceUntil));
+  const eventPose=interactiveMode?eventMotion.sample():null;
+  const holdingRice=Boolean(interactiveMode&&(eventPose?.kind==='compacting'||(!eventPose&&time<riceUntil)));
+  const showEventPeace=eventPose?.kind==='success'&&outfits?.selected!=='witch';
+  applyEventMotion(p,eventPose,blink,override==='auto');
   if(holdingRice){p.bodyAngleX=clamp(p.bodyAngleX,-2.5,2.5);p.bodyAngleZ=clamp(p.bodyAngleZ,-2.5,2.5);}
   const speech=speaking?{active:true,weights:sampleMouthWeights(data,audio.currentTime).weights}:null;
   const quality=renderQuality(innerWidth,innerHeight,devicePixelRatio,faceView?'face':cameraMode,current.rig.image.width/current.rig.image.height);
   const [w,h]=quality.output;
   engine.style.width=quality.css[0]+'px';engine.style.height=quality.css[1]*(1+(current.renderPadding??0))+'px';
-  const started=performance.now();const result=current.draw(p,'normal',dt,speech,{rice:holdingRice});renderMs=performance.now()-started;
+  const started=performance.now();const result=current.draw(p,'normal',dt,speech,{rice:holdingRice,peace:showEventPeace});renderMs=performance.now()-started;
   if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}
   context.clearRect(0,0,w,h);context.imageSmoothingEnabled=true;context.imageSmoothingQuality='high';
   const surface=current.surface;
@@ -219,12 +228,15 @@ function paint(now){
     bodyFrame=bodyFramePlacement(w,h,current.rig.image,current.viewFrame,cameraMix);
     context.drawImage(surface,bodyFrame.x,bodyFrame.y,bodyFrame.width,bodyFrame.height);
   }
+  if(eventPose?.kind==='error')drawFailureSweat(context,bodyFrame,result.focus);
   if(speaking){
     metrics.frames++;metrics.maxOpen=Math.max(metrics.maxOpen,1-(result.weights?.closed??1));
     const dominant=Object.entries(result.weights??{}).sort((a,b)=>b[1]-a[1])[0]?.[0];
     if(dominant&&dominant!=='closed')metrics.shapes.add(dominant.split('_')[0]);
   }
   frameCount++;
+  document.body.dataset.eventMotion=eventPose?.kind??'';
+  document.body.dataset.eventPeace=String(showEventPeace);
   document.body.dataset.companionState=JSON.stringify({ready:true,revision:'halloween-events-20261031',outfit:outfits?.selected??'maid',costumePhysics:current.costumePhysics??null,interactiveMode,voiceChannel:voiceChannel.snapshot(),surface:settings.surface??'preview',cameraMode,cameraMix,doubleTapCount,autoVoice:settings.autoVoice,followPointer:settings.followPointer,bodyShowcase:settings.bodyShowcase,bodyShowcaseGain:settings.bodyShowcaseGain,idleMotion:normalizeIdleMotion(settings.idleMotion),dragPhysics:{dragging:dragResponse.dragging,energy:dragResponse.energy,response:dragResponse.response,stats:dragStats},holdingRice,riceArtwork:result.artwork,status:state.status,expression:key,speaking,language,preferredLanguage,clipId:playback?.id??null,clipKind:playback?.kind??null,voiceSource:playback?.source??null,interaction:policy.snapshot(),gaze:[p.gazeX,p.gazeY],angles:[p.angleX,p.angleY,p.bodyAngleX,p.bodyAngleZ],audioTime:audio.currentTime,audioEnded:audio.ended,clipFrames:metrics.frames,clipMaxOpen:metrics.maxOpen,frameCount,renderMs:Math.round(renderMs*10)/10,engineSize:[engine.width,engine.height],outputSize:[w,h],bodyFrame,renderDensity:quality.density,riceRigid:result.artwork?.rigid??false,riceShoulderError:result.artwork?.shoulderError??0,eyeSize:current.confirmed.eyeSize,eyeDistance:current.confirmed.eyeDistance,mouthScale:current.confirmed.mouthScale,weights:result.weights});
 }
 try{

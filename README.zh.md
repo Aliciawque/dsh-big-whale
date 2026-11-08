@@ -4,7 +4,7 @@
 
 [![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.7)
 
-给 DeepSeek Harness 使用的鲸鱼娘编程伙伴。写代码时陪着你，根据事件切换语音和表情；上下文压缩时，会捧起一碗超大的白米饭。
+给 DeepSeek Harness 使用的鲸鱼娘编程伙伴。写代码时陪着你，按会话事件切换动作。上下文压缩时捧饭低头，任务完成时微笑并在女仆装下比耶，任务失败时收臂垂眼，冒一小滴汗。
 
 ## 日常女仆装
 
