@@ -60,6 +60,15 @@ for(const part of rig.layered.parts)if(/^part_side_[lr]_drop$/.test(part.name))p
  for(const side of ['l','r']){const source=rig.layered.parts.find(p=>p.name==='part_shin_'+side),bridge={...source,name:'part_stocking_bridge_'+side,legRepair:side==='l'?-1:1,solidGrid:true};rig.layered.parts.splice(rig.layered.parts.indexOf(source),0,bridge);source.shinClear=true;
   for(const suffix of ['', '_hd']){const key=source.name+suffix;if(layerMetadata.layers[key]){layerMetadata.layers[bridge.name+suffix]=layerMetadata.layers[key];authoredAssets[bridge.name+suffix+'.png']=pkg.assets[key+'.png'];}}
  }
+ const armIndex=rig.layered.parts.findIndex(part=>part.name==='part_upperarm_l');
+ const peaceArm='part_event_peace_arm_l';
+ rig.layered.parts.splice(armIndex+1,0,{
+  name:peaceArm,kind:'body',stage:'back',depth:0,pivot:[350,424],followBand:[340,370],sway:0,meshCell:6,
+  translationAnchor:[350,424],opacityParameter:'eventPeaceArmVisible',
+ });
+ layerMetadata.layers[peaceArm]=[52.08,320.68,367.36,335.72];
+ authoredAssets[peaceArm+'.png']=new URL('./event-peace-arm.png',import.meta.url).href;
+ rig.layered.parts.find(part=>part.name==='part_shoulder_socket_l').opacityParameter='eventShoulderVisible';
  const layerMetadataURL=URL.createObjectURL(new Blob([JSON.stringify(layerMetadata)],{type:'application/json'}));
  const geometry=createRig(rig),sheet=await json(pkg.assets['sprites/sprites.json']),oldRect=sheet.layers.mouth_closed;
  for(const part of rig.layered.parts)if(part.opacityParameter==='visArms'){if(part.name.endsWith('_r'))part.opacityParameter='controlArmRVisible';else if(part.name.endsWith('_l'))part.opacityParameter='controlArmLVisible';}
@@ -104,6 +113,12 @@ for(const part of rig.layered.parts)if(/^part_side_[lr]_drop$/.test(part.name))p
   const drawStart=performance.now();
   const artworkState=poseArtwork.prepare(action?.rice?action:null,dt,P);
   const speaking=Boolean(speech?.active),native={...P,...artworkState.pose,controlRearHeadVisible:(P.visHair??1)*(P.reviewHideRearHead?0:1),eyeFlowVisible:rig.layered.eyeDetails.flowEnabled===false?0:1,eyeScale:confirmed.eyeSize/100,eyeSpacing:confirmed.eyeDistance/100,mouthOpen:0,mouthExpression:speaking?0:P.mouthExpression,controlArmLVisible:artworkState.rice?0:1,controlArmRVisible:artworkState.hideRight?0:1,controlRightHandVisible:artworkState.rice?0:1,controlNativeCuffVisible:artworkState.rice||artworkState.palmAuthored?0:1,controlWaveCuffVisible:!artworkState.rice&&artworkState.palmAuthored?1:0,authoredArmVisible:0,authoredPalmVisible:!artworkState.rice&&artworkState.palmAuthored?1:0,controlRestHandLVisible:artworkState.rice||artworkState.palmAuthored?0:1};
+  native.eventShoulderVisible=native.controlArmLVisible;
+  native.eventPeaceArmVisible=Number(Boolean(action?.peace&&!artworkState.rice));
+  if(native.eventPeaceArmVisible){
+   native.controlArmLVisible=0;
+   native.controlRestHandLVisible=0;
+  }
   avatar.setParameters(native);avatar.advance(dt,dt?1/dt:30);
   const engineMs=performance.now()-drawStart;
   if(surface.width!==engine.width||surface.height!==engine.height){surface.width=engine.width;surface.height=engine.height;}

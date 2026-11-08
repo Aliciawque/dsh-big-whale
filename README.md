@@ -4,7 +4,7 @@
 
 [![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.7)
 
-A whale-girl desktop companion for DeepSeek Harness. She keeps you company while you code, reacts to events, and picks up a giant bowl of rice when your context is compacted.
+A whale-girl desktop companion for DeepSeek Harness. She keeps you company while you code and reacts to session events. During compaction she holds a bowl of rice and dips her head. On completion she smiles and makes a peace sign in the maid outfit. On failure she draws her arms in, lowers her gaze, and shows a small sweat drop.
 
 ## Everyday maid outfit
 

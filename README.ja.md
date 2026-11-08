@@ -4,7 +4,7 @@
 
 [![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.7)
 
-DeepSeek Harness 用のクジラ娘コンパニオンです。コードを書く時間に寄り添い、イベントに合わせて声や表情を変えます。コンテキストが圧縮されると、大きなご飯を持ちます。
+DeepSeek Harness 用のクジラ娘コンパニオンです。コードを書く時間に寄り添い、セッションのイベントに合わせてポーズを切り替えます。圧縮中はご飯を持っておじぎし、完了時は笑顔になり、メイド服ではピースをします。失敗時は腕を引き、目を伏せて小さな汗マークを出します。
 
 ## いつものメイド服
 

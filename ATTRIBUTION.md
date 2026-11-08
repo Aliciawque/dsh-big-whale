@@ -13,3 +13,5 @@ Derivative character visuals and the bundled synthetic character speech are offe
 Keep these credits with redistributed copies and show a visible link to the credits alongside public downloads. No original-creator endorsement is claimed.
 
 The Halloween outfit, separated costume parts, ghost lantern, pumpkin icon and witch rice pose are AI-assisted derivative artwork under the same noncommercial attribution/share-alike terms above. Halloween speech uses the same selected synthetic voices.
+
+The maid peace-sign arm is AI-assisted derivative artwork based on ZipZipPipe's maid redesign and follows the same CC BY-NC-SA 4.0 terms.
