@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+## 0.6.0-rc.8 — 2026-11-08
+
+- Add three event poses. Compaction holds the rice bowl and dips the head. Completion smiles and makes a peace sign in the maid outfit. Failure draws the arms inward and shows a small sweat drop.
+- Apply poses directly when the companion receives the corresponding event, including when event voice is off.
+- Prevent repeated polls and expired terminal events from replaying a pose.
+
 ## 0.6.0-rc.7 — 2026-11-03
 
 - Add a Claude Code plugin (`/plugin install big-whale --marketplace Aliciawque/dsh-big-whale`): turns, tool calls, permission asks and compactions of the main conversation drive the same expressions, voices and rice pose, through a shared local companion (`bin/claude-code-companion.mjs`).

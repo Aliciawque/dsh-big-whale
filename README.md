@@ -2,7 +2,7 @@
 
 [English](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.md) · [简体中文](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.zh.md) · [日本語](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.ja.md)
 
-[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.7)
+[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.8)
 
 A whale-girl desktop companion for DeepSeek Harness. She keeps you company while you code and reacts to session events. During compaction she holds a bowl of rice and dips her head. On completion she smiles and makes a peace sign in the maid outfit. On failure she draws her arms in, lowers her gaze, and shows a small sweat drop.
 
@@ -59,7 +59,7 @@ Native renders from the released **0.6.0-rc.5** model. Click either image to ope
 Tested with **DSH 0.2.1-rc.5** and **Node.js 22.17+**. Use your existing Web-backed DSH profile; replace `web` with its name.
 
 ```sh
-dsh plugin --profile web add dsh-big-whale@0.6.0-rc.7
+dsh plugin --profile web add dsh-big-whale@0.6.0-rc.8
 dsh web
 ```
 
