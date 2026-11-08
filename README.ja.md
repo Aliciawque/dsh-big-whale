@@ -2,7 +2,7 @@
 
 [English](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.md) · [简体中文](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.zh.md) · [日本語](https://github.com/Aliciawque/dsh-big-whale/blob/main/README.ja.md)
 
-[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.7)
+[![npm next](https://img.shields.io/npm/v/dsh-big-whale/next?label=npm%20next)](https://www.npmjs.com/package/dsh-big-whale/v/0.6.0-rc.8)
 
 DeepSeek Harness 用のクジラ娘コンパニオンです。コードを書く時間に寄り添い、セッションのイベントに合わせてポーズを切り替えます。圧縮中はご飯を持っておじぎし、完了時は笑顔になり、メイド服ではピースをします。失敗時は腕を引き、目を伏せて小さな汗マークを出します。
 
@@ -59,7 +59,7 @@ DeepSeek Harness 用のクジラ娘コンパニオンです。コードを書く
 動作確認済み：**DSH 0.2.1-rc.5**、**Node.js 22.17+**。既存の Web 用 profile にインストールしてください。`web` は使用中の profile 名に置き換えられます。
 
 ```sh
-dsh plugin --profile web add dsh-big-whale@0.6.0-rc.7
+dsh plugin --profile web add dsh-big-whale@0.6.0-rc.8
 dsh web
 ```
 

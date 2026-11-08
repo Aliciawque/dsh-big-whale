@@ -1,4 +1,16 @@
-# Verification — 0.6.0-rc.7
+# Verification — 0.6.0-rc.8
+
+## RC8 candidate checks (2026-11-08)
+
+- Source: merged PR #7 at `f48b1e025399af56eddadc32c24519966989aaf7`. GitHub Release checks passed for the reviewed PR head and the merge commit.
+- Windows checks passed: 21 Node tests, release structure checks, Claude plugin validation, and 4 Claude hook tests. The installed DSH 0.2.1-rc.5 validator accepted the format-1 index.
+- The 72,180,407-byte candidate contains 310 files. SHA-256 is `cf299a2d686d4e12038891d581ebd257f6bff0d1235f5d1a8e565a24c5e0706d`. All installed files matched the candidate in a separate Web-backed DSH profile. The running host reported RC8 and served the shell and the new motion assets. The Claude-only event route returned HTTP 405 under DSH.
+- On Windows Chrome, the standalone companion from that same installed archive handled compaction, completion, and failure through its token-protected local event endpoint. With event voice disabled, the three poses appeared and returned to regular motion. Repeated state polls did not replay expired poses. The standalone host cleaned up its runtime file after the test.
+
+## RC8 public registry verification
+
+- npm published `dsh-big-whale@0.6.0-rc.8` at 2026-11-08T11:18:57.027Z. The `next` tag points to RC8 and `latest` remains RC2.
+- An anonymous download matched the 72,180,407-byte candidate byte for byte. The public SHA-1 and SHA-512 integrity also match the npm pack metadata.
 
 ## RC7 candidate checks (2026-11-03)
 
